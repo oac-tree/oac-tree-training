@@ -10,7 +10,8 @@ target_include_directories(config-memory-server
 
 target_sources(config-memory-server
   PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/main.cpp
+    config-handler.cpp
+    main.cpp
 )
 
 find_package(sup-dto REQUIRED)
