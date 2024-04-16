@@ -1,1 +1,1 @@
-add_subdirectory(config-memory-server)
+add_subdirectory(signal-generator)
