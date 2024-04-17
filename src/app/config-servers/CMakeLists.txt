@@ -12,25 +12,18 @@ target_include_directories(config-servers
 target_sources(config-servers
   PRIVATE
     factory.cpp
-    i_server_stack.cpp
-    utils.cpp
     main.cpp
 )
 
 add_subdirectory(signal-generator)
 
-find_package(sup-dto REQUIRED)
-find_package(sup-protocol REQUIRED)
-find_package(sup-epics REQUIRED)
 find_package(sup-config REQUIRED)
 find_package(sup-utils REQUIRED)
 
 target_link_libraries(config-servers
   PRIVATE
+    sequencer-training
     sup-config::sup-config
-    sup-epics::sup-epics
-    sup-protocol::sup-protocol
-    sup-dto::sup-dto
     sup-utils::sup-cli
 )
 

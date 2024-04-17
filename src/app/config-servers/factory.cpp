@@ -19,14 +19,27 @@
  * of the distribution package.
  ******************************************************************************/
 
-#include "i_server_stack.h"
+#include "factory.h"
+
+#include <sequencer/training/utils.h>
+
+#include <signal-generator/config_handler.h>
 
 namespace sequencer
 {
 namespace training
 {
+using namespace sup::config;
 
-IServerStack::~IServerStack() = default;
+std::unique_ptr<IServerStack>
+CreateSignalGeneratorConfigServer(const std::string& service_name)
+{
+  std::unique_ptr<ConfigurationInterface>
+    signal_generator_handler{new SignalGeneratorConfigHandler()};
+  std::unique_ptr<IServerStack> server{
+    new EPICSConfigServerStack{service_name, std::move(signal_generator_handler)}};
+  return server;
+}
 
 }  // namespace training
 

@@ -19,11 +19,13 @@
  * of the distribution package.
  ******************************************************************************/
 
-#ifndef SEQUENCER_TRAINING_CVVF_SERVERS_UTILS_H_
-#define SEQUENCER_TRAINING_CVVF_SERVERS_UTILS_H_
+#ifndef SEQUENCER_TRAINING_UTILS_H_
+#define SEQUENCER_TRAINING_UTILS_H_
 
-#include "i_server_stack.h"
+#include <sequencer/training/i_server_stack.h>
 
+#include <sup/config/configuration_interface.h>
+#include <sup/config/configuration_protocol_server.h>
 #include <sup/cvvf/cvvf_interface.h>
 #include <sup/cvvf/cvvf_protocol_server.h>
 #include <sup/protocol/protocol_rpc_server.h>
@@ -36,6 +38,20 @@ namespace sequencer
 {
 namespace training
 {
+class EPICSConfigServerStack : public IServerStack
+{
+public:
+  explicit EPICSConfigServerStack(const std::string& service_name,
+                                  std::unique_ptr<sup::config::ConfigurationInterface> config_handler);
+
+  virtual ~EPICSConfigServerStack();
+private:
+  std::unique_ptr<sup::config::ConfigurationInterface> m_config_handler;
+  sup::config::ConfigurationProtocolServer m_config_protocol_server;
+  sup::protocol::ProtocolRPCServer m_protocol_rpc_server;
+  sup::epics::PvAccessRPCServer m_epics_server;
+};
+
 class EPICSCVVFServerStack : public IServerStack
 {
 public:
@@ -54,4 +70,4 @@ private:
 
 }  // namespace sequencer
 
-#endif  // SEQUENCER_TRAINING_CVVF_SERVERS_UTILS_H_
+#endif  // SEQUENCER_TRAINING_UTILS_H_

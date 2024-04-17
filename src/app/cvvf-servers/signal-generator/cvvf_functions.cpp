@@ -55,14 +55,25 @@ SignalGeneratorShapeValidator::SignalGeneratorShapeValidator() = default;
 SignalGeneratorShapeValidator::~SignalGeneratorShapeValidator() = default;
 
 bool SignalGeneratorShapeValidator::GetInputType(sup::dto::AnyType& input_type) const
-{}
+{
+  input_type = signal_config_t;
+  return true;
+}
 
 bool SignalGeneratorShapeValidator::GetOutputType(sup::dto::AnyType& output_type) const
-{}
+{
+  output_type = sup::dto::EmptyType;
+  return true;
+}
 
 bool SignalGeneratorShapeValidator::Process(const sup::dto::AnyValue& input,
                                             sup::dto::AnyValue& output)
-{}
+{
+  (void)output;  // validation function doesn't produce output
+  static const std::vector<std::string> valid_shapes = {"sine", "triangle", "sawtooth", "square"};
+  auto shape = input["shape"].As<std::string>();
+  return std::find(valid_shapes.begin(), valid_shapes.end(), shape) != valid_shapes.end();
+}
 
 }  // namespace training
 

@@ -19,23 +19,31 @@
  * of the distribution package.
  ******************************************************************************/
 
-#include "utils.h"
+#include "factory.h"
+
+#include <signal-generator/cvvf_functions.h>
+
+#include <sequencer/training/utils.h>
+
+#include <sup/cvvf/function_executor.h>
 
 namespace sequencer
 {
 namespace training
 {
+using namespace sup::cvvf;
 
-EPICSConfigServerStack::EPICSConfigServerStack(
-  const std::string& service_name,
-  std::unique_ptr<sup::config::ConfigurationInterface> config_handler)
-  : m_config_handler{std::move(config_handler)}
-  , m_config_protocol_server{*m_config_handler}
-  , m_protocol_rpc_server{m_config_protocol_server}
-  , m_epics_server{sup::epics::GetDefaultRPCServerConfig(service_name), m_protocol_rpc_server}
-{}
-
-EPICSConfigServerStack::~EPICSConfigServerStack() = default;
+std::unique_ptr<IServerStack>
+CreateSignalGeneratorCvvfServer(const std::string& service_name)
+{
+  std::unique_ptr<FunctionExecutor> function_executor{};
+  // register functions
+  std::unique_ptr<UserFunction> shape_validator{new SignalGeneratorShapeValidator()};
+  function_executor->RegisterFunction("ValidateShape", std::move(shape_validator));
+  std::unique_ptr<IServerStack> server{
+    new EPICSCVVFServerStack{service_name, std::move(function_executor)}};
+  return server;
+}
 
 }  // namespace training
 

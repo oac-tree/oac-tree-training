@@ -176,13 +176,13 @@ bool IsValidConfiguration(const sup::dto::AnyValue& config)
 bool IsValidSignalConfig(const sup::dto::AnyValue& signal_config, bool active)
 {
   // The default initialized configuration is allowed when not active
-  const sup::dto::AnyValue zero_config{signal_config_t};
+  static const sup::dto::AnyValue zero_config{signal_config_t};
   if (signal_config == zero_config && !active)
   {
     return true;
   }
   // Only specific shapes are allowed
-  const std::vector<std::string> allowed_shapes = {"sine", "triangle", "sawtooth", "square"};
+  static const std::vector<std::string> allowed_shapes = {"sine", "triangle", "sawtooth", "square"};
   auto shape = signal_config["shape"].As<std::string>();
   if (std::find(allowed_shapes.begin(), allowed_shapes.end(), shape) == allowed_shapes.end())
   {

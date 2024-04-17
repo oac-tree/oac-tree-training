@@ -19,24 +19,21 @@
  * of the distribution package.
  ******************************************************************************/
 
-#ifndef SEQUENCER_TRAINING_CVVF_SERVERS_FACTORY_H_
-#define SEQUENCER_TRAINING_CVVF_SERVERS_FACTORY_H_
-
-#include "i_server_stack.h"
-
-#include <memory>
-#include <string>
+#ifndef SEQUENCER_TRAINING_I_SERVER_STACK_H_
+#define SEQUENCER_TRAINING_I_SERVER_STACK_H_
 
 namespace sequencer
 {
 namespace training
 {
-
-std::unique_ptr<IServerStack>
-CreateSignalGeneratorCvvfServer(const std::string& service_name);
+class IServerStack
+{
+public:
+  virtual ~IServerStack();
+};
 
 }  // namespace training
 
 }  // namespace sequencer
 
-#endif  // SEQUENCER_TRAINING_CVVF_SERVERS_FACTORY_H_
+#endif  // SEQUENCER_TRAINING_I_SERVER_STACK_H_

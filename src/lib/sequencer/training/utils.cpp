@@ -26,6 +26,17 @@ namespace sequencer
 namespace training
 {
 
+EPICSConfigServerStack::EPICSConfigServerStack(
+  const std::string& service_name,
+  std::unique_ptr<sup::config::ConfigurationInterface> config_handler)
+  : m_config_handler{std::move(config_handler)}
+  , m_config_protocol_server{*m_config_handler}
+  , m_protocol_rpc_server{m_config_protocol_server}
+  , m_epics_server{sup::epics::GetDefaultRPCServerConfig(service_name), m_protocol_rpc_server}
+{}
+
+EPICSConfigServerStack::~EPICSConfigServerStack() = default;
+
 EPICSCVVFServerStack::EPICSCVVFServerStack(
   const std::string& service_name,
   std::unique_ptr<sup::cvvf::CVVFInterface> cvvf_handler)

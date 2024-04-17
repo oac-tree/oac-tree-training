@@ -1,2 +1,2 @@
-add_subdirectory(config-servers)
-add_subdirectory(cvvf-servers)
+add_subdirectory(lib)
+add_subdirectory(app)
