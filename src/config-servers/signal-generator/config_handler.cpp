@@ -23,6 +23,7 @@
 
 #include <sup/dto/anyvalue_helper.h>
 
+#include <algorithm>
 #include <exception>
 
 const std::string kOutput_1 = "out1";
@@ -37,12 +38,16 @@ const sup::dto::AnyType signal_config_t = {{
 const sup::dto::AnyType generator_config_t = {{
   { kOutput_1, signal_config_t },
   { kOutput_2, signal_config_t },
-  { "enabled", sup::dto::BooleanType }
+  { "active", sup::dto::BooleanType }
 }, "SignalGenerator_t" };
 
 namespace
 {
 bool IsKnownDatasetName(const std::string& dataset_name);
+sup::dto::AnyValue& GetDataset(sup::dto::AnyValue& config, const std::string& name);
+const sup::dto::AnyValue& GetDataset(const sup::dto::AnyValue& config, const std::string& name);
+bool IsValidConfiguration(const sup::dto::AnyValue& config);
+bool IsValidSignalConfig(const sup::dto::AnyValue& signal_config);
 }  // unnamed namespace
 
 namespace sequencer
@@ -75,7 +80,7 @@ ProtocolResult SignalGeneratorConfigHandler::ConfigurationStructure(
   {
     return sup::config::DatasetUnknown;
   }
-  anytype = Dataset(name).GetType();
+  anytype = GetDataset(m_config, name).GetType();
   return Success;
 }
 
@@ -94,7 +99,7 @@ ProtocolResult SignalGeneratorConfigHandler::ReadConfiguration(
   {
     return sup::config::DatasetUnknown;
   }
-  if (!sup::dto::TryAssignIfEmptyOrConvert(value, Dataset(name)))
+  if (!sup::dto::TryAssignIfEmptyOrConvert(value, GetDataset(m_config, name)))
   {
     return sup::config::ConfigurationMismatch;
   }
@@ -108,32 +113,17 @@ ProtocolResult SignalGeneratorConfigHandler::WriteConfiguration(
   {
     return sup::config::DatasetUnknown;
   }
-  if (!sup::dto::TryConvert(Dataset(name), value))
+  sup::dto::AnyValue config_cache = m_config;
+  if (!sup::dto::TryConvert(GetDataset(config_cache, name), value))
   {
     return sup::config::ConfigurationMismatch;
   }
+  if (!IsValidConfiguration(config_cache))
+  {
+    return sup::config::ReadWriteError;
+  }
+  m_config = config_cache;
   return Success;
-}
-
-sup::dto::AnyValue& SignalGeneratorConfigHandler::Dataset(const std::string& name)
-{
-  return const_cast<sup::dto::AnyValue&>(
-    static_cast<const SignalGeneratorConfigHandler&>(*this).Dataset(name));
-}
-
-const sup::dto::AnyValue& SignalGeneratorConfigHandler::Dataset(const std::string& name) const
-{
-  if (name.empty())
-  {
-    return m_config;
-  }
-  if (name == kOutput_1 || name == kOutput_2)
-  {
-    return m_config[name];
-  }
-  const std::string error =
-    "SignalGeneratorConfigHandler::Dataset: trying to get reference to unknown dataset";
-  throw std::runtime_error(error);
 }
 
 }  // namespace training
@@ -154,5 +144,56 @@ bool IsKnownDatasetName(const std::string& dataset_name)
   }
   return false;
 }
+
+sup::dto::AnyValue& GetDataset(sup::dto::AnyValue& config, const std::string& name)
+{
+  return const_cast<sup::dto::AnyValue&>(
+    GetDataset(static_cast<const sup::dto::AnyValue&>(config), name));
+}
+
+const sup::dto::AnyValue& GetDataset(const sup::dto::AnyValue& config, const std::string& name)
+{
+  if (name.empty())
+  {
+    return config;
+  }
+  if (name == kOutput_1 || name == kOutput_2)
+  {
+    return config[name];
+  }
+  const std::string error =
+    "SignalGeneratorConfigHandler::Dataset: trying to get reference to unknown dataset";
+  throw std::runtime_error(error);
+}
+
+bool IsValidConfiguration(const sup::dto::AnyValue& config)
+{
+  return IsValidSignalConfig(config[kOutput_1]) && IsValidSignalConfig(config[kOutput_2]);
+}
+
+bool IsValidSignalConfig(const sup::dto::AnyValue& signal_config)
+{
+  // The default initialized configuration is allowed (all zero)
+  const sup::dto::AnyValue zero_config{signal_config_t};
+  if (signal_config == zero_config)
+  {
+    return true;
+  }
+  // Only specific shapes are allowed
+  const std::vector<std::string> allowed_shapes = {"sine", "triangle", "sawtooth", "square"};
+  auto shape = signal_config["shape"].As<std::string>();
+  if (std::find(allowed_shapes.begin(), allowed_shapes.end(), shape) == allowed_shapes.end())
+  {
+    return false;
+  }
+  // Frequency should be between 10 Hz to 20kHz
+  auto frequency = signal_config["freq"].As<sup::dto::float64>();
+  if (frequency < 10.0 || frequency > 1e4)
+  {
+    return false;
+  }
+  return true;
+}
+
 }  // unnamed namespace
 

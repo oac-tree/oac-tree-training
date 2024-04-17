@@ -4,19 +4,43 @@
            xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
            xs:schemaLocation="http://codac.iter.org/sup/sequencer sequencer.xsd">
     <Plugin>libsequencer-sup-config.so</Plugin>
-    <Sequence name="Configure signal generator output 1">
-        <ReadConfiguration name="Read signal generator configuration for output 1"
-            service="test:SignalGeneratorConfigServer"
-            configName="out1"
-            outputVar="config"/>
-        <Output description="Previous configuration" fromVar="config"/>
-        <Input description="Set configuration values" outputVar="config"/>
-        <WriteConfiguration name="Write signal generator configuration for output 1"
-            service="test:SignalGeneratorConfigServer"
-            configName="out1"
-            inputVar="config"/>
-    </Sequence>
+    <UserChoice>
+        <Sequence name="Output signal generator configuration">
+            <ReadConfiguration name="Read signal generator configuration"
+                service="test:SignalGeneratorConfigServer"
+                outputVar="config"/>
+            <Output description="Signal generator configuration" fromVar="config"/>
+        </Sequence>
+        <Sequence name="Configure signal generator output 1">
+            <ReadConfiguration name="Read signal generator configuration for output 1"
+                service="test:SignalGeneratorConfigServer"
+                configName="out1"
+                outputVar="config"/>
+            <Output description="Previous configuration" fromVar="config"/>
+            <Input description="Set configuration values" outputVar="config"/>
+            <WriteConfiguration name="Write signal generator configuration for output 1"
+                service="test:SignalGeneratorConfigServer"
+                configName="out1"
+                inputVar="config"/>
+            <Output description="New configuration" fromVar="config"/>
+        </Sequence>
+        <Sequence name="Configure signal generator output 2">
+            <ReadConfiguration name="Read signal generator configuration for output 2"
+                service="test:SignalGeneratorConfigServer"
+                configName="out2"
+                outputVar="config"/>
+            <Output description="Previous configuration" fromVar="config"/>
+            <Input description="Set configuration values" outputVar="config"/>
+            <WriteConfiguration name="Write signal generator configuration for output 2"
+                service="test:SignalGeneratorConfigServer"
+                configName="out2"
+                inputVar="config"/>
+            <Output description="New configuration" fromVar="config"/>
+        </Sequence>
+    </UserChoice>
     <Workspace>
+        <Local name="true" type='{"type":"bool"}' value="true"/>
+        <Local name="false" type='{"type":"bool"}' value="false"/>
         <Local name="config" dynamicType="true" />
     </Workspace>
 </Procedure>
