@@ -19,7 +19,7 @@
  * of the distribution package.
  ******************************************************************************/
 
-#include "config-handler.h"
+#include "config_handler.h"
 
 namespace sequencer
 {

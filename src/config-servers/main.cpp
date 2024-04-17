@@ -19,13 +19,7 @@
  * of the distribution package.
  ******************************************************************************/
 
-#include "config-handler.h"
-
-#include <sup/config/configuration_protocol_server.h>
-
-#include <sup/protocol/protocol_rpc_server.h>
-
-#include <sup/epics/pv_access_rpc_server.h>
+#include "factory.h"
 
 #include <chrono>
 #include <iostream>
@@ -34,25 +28,14 @@
 const std::string SERVICE_NAME = "SUP-EXAMPLES::ConfigMemoryServer";
 
 using namespace sequencer::training;
-using namespace sup::config;
 
 int main(int argc, char* argv[])
 {
   (void)argc;
   (void)argv;
 
-  SignalGeneratorConfigHandler signal_generator_handler{};
-
-  // Protocol stack
-  ConfigurationProtocolServer config_protocol_server{signal_generator_handler};
-  sup::protocol::ProtocolRPCServer generic_protocol_server{config_protocol_server};
-
-  // EPICS server
-  auto service_name = SERVICE_NAME;
-  auto server_config = sup::epics::GetDefaultRPCServerConfig(service_name);
-  sup::epics::PvAccessRPCServer server{server_config, generic_protocol_server};
-
-  std::cout << "Signal generator configuration service listening on: " << service_name << std::endl;
+  auto signal_generator_config_server = CreateSignalGeneratorConfigServer(SERVICE_NAME);
+  std::cout << "Signal generator configuration service listening on: " << SERVICE_NAME << std::endl;
 
   // Wait for interrupt signal
   while (true)
