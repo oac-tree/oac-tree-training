@@ -49,10 +49,13 @@ int main(int argc, char* argv[])
     std::cout << parser.GetUsageString();
     return 0;
   }
-  auto service_name = parser.GetValue<std::string>("--service-prefix");
+  auto service_prefix = parser.GetValue<std::string>("--service-prefix");
 
-  auto signal_generator_config_server = CreateSignalGeneratorConfigServer(service_name);
-  std::cout << "Signal generator configuration service listening on: " << service_name << std::endl;
+  std::string signal_generator_service_name = service_prefix + ":SignalGeneratorConfigServer";
+  auto signal_generator_config_server = CreateSignalGeneratorConfigServer(
+    signal_generator_service_name);
+  std::cout << "Signal generator configuration service listening on: "
+            << signal_generator_service_name << std::endl;
 
   // Wait for interrupt signal
   while (true)

@@ -52,6 +52,10 @@ public:
 
   ProtocolResult WriteConfiguration(const std::string& name,
                                     const sup::dto::AnyValue& value) override;
+private:
+  sup::dto::AnyValue m_config;
+  sup::dto::AnyValue& Dataset(const std::string& name);
+  const sup::dto::AnyValue& Dataset(const std::string& name) const;
 };
 
 }  // namespace training
