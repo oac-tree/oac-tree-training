@@ -21,6 +21,8 @@
 
 #include "factory.h"
 
+#include <sup/cli/command_line_parser.h>
+
 #include <chrono>
 #include <iostream>
 #include <thread>
@@ -31,11 +33,26 @@ using namespace sequencer::training;
 
 int main(int argc, char* argv[])
 {
-  (void)argc;
-  (void)argv;
+  sup::cli::CommandLineParser parser;
+  parser.SetDescription(
+      /*header*/ "",
+      "The program instantiates the configuration servers for the Sequencer training.");
+  parser.AddHelpOption();
 
-  auto signal_generator_config_server = CreateSignalGeneratorConfigServer(SERVICE_NAME);
-  std::cout << "Signal generator configuration service listening on: " << SERVICE_NAME << std::endl;
+  parser.AddOption({"-s", "--service-prefix"}, "Prefix to use for all configuration service names")
+      .SetParameter(true)
+      .SetValueName("prefix")
+      .SetRequired(true);
+
+  if (!parser.Parse(argc, argv))
+  {
+    std::cout << parser.GetUsageString();
+    return 0;
+  }
+  auto service_name = parser.GetValue<std::string>("--service-prefix");
+
+  auto signal_generator_config_server = CreateSignalGeneratorConfigServer(service_name);
+  std::cout << "Signal generator configuration service listening on: " << service_name << std::endl;
 
   // Wait for interrupt signal
   while (true)

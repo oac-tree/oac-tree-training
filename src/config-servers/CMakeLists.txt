@@ -23,6 +23,7 @@ find_package(sup-dto REQUIRED)
 find_package(sup-protocol REQUIRED)
 find_package(sup-epics REQUIRED)
 find_package(sup-config REQUIRED)
+find_package(sup-utils REQUIRED)
 
 target_link_libraries(config-servers
   PRIVATE
@@ -31,6 +32,7 @@ target_link_libraries(config-servers
     sup-epics::sup-epics
     sup-protocol::sup-protocol
     sup-dto::sup-dto
+    sup-utils::sup-cli
 )
 
 # -- Installation --
