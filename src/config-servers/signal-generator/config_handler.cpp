@@ -47,7 +47,7 @@ bool IsKnownDatasetName(const std::string& dataset_name);
 sup::dto::AnyValue& GetDataset(sup::dto::AnyValue& config, const std::string& name);
 const sup::dto::AnyValue& GetDataset(const sup::dto::AnyValue& config, const std::string& name);
 bool IsValidConfiguration(const sup::dto::AnyValue& config);
-bool IsValidSignalConfig(const sup::dto::AnyValue& signal_config);
+bool IsValidSignalConfig(const sup::dto::AnyValue& signal_config, bool active);
 }  // unnamed namespace
 
 namespace sequencer
@@ -168,14 +168,16 @@ const sup::dto::AnyValue& GetDataset(const sup::dto::AnyValue& config, const std
 
 bool IsValidConfiguration(const sup::dto::AnyValue& config)
 {
-  return IsValidSignalConfig(config[kOutput_1]) && IsValidSignalConfig(config[kOutput_2]);
+  auto active = config["active"].As<sup::dto::boolean>();
+  return IsValidSignalConfig(config[kOutput_1], active)
+      && IsValidSignalConfig(config[kOutput_2], active);
 }
 
-bool IsValidSignalConfig(const sup::dto::AnyValue& signal_config)
+bool IsValidSignalConfig(const sup::dto::AnyValue& signal_config, bool active)
 {
-  // The default initialized configuration is allowed (all zero)
+  // The default initialized configuration is allowed when not active
   const sup::dto::AnyValue zero_config{signal_config_t};
-  if (signal_config == zero_config)
+  if (signal_config == zero_config && !active)
   {
     return true;
   }

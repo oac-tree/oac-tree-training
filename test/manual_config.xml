@@ -37,6 +37,28 @@
                 inputVar="config"/>
             <Output description="New configuration" fromVar="config"/>
         </Sequence>
+        <Sequence name="Activate signal generator">
+            <ReadConfiguration name="Read signal generator configuration"
+                service="test:SignalGeneratorConfigServer"
+                outputVar="config"/>
+            <Output description="Previous configuration" fromVar="config"/>
+            <Copy inputVar="true" outputVar="config.active" />
+            <WriteConfiguration name="Write signal generator configuration"
+                service="test:SignalGeneratorConfigServer"
+                inputVar="config"/>
+            <Output description="New configuration" fromVar="config"/>
+        </Sequence>
+        <Sequence name="Deactivate signal generator">
+            <ReadConfiguration name="Read signal generator configuration"
+                service="test:SignalGeneratorConfigServer"
+                outputVar="config"/>
+            <Output description="Previous configuration" fromVar="config"/>
+            <Copy inputVar="false" outputVar="config.active" />
+            <WriteConfiguration name="Write signal generator configuration"
+                service="test:SignalGeneratorConfigServer"
+                inputVar="config"/>
+            <Output description="New configuration" fromVar="config"/>
+        </Sequence>
     </UserChoice>
     <Workspace>
         <Local name="true" type='{"type":"bool"}' value="true"/>
