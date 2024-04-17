@@ -27,7 +27,6 @@ find_package(sup-utils REQUIRED)
 
 target_link_libraries(config-servers
   PRIVATE
-    sup-config::sup-config-test
     sup-config::sup-config
     sup-epics::sup-epics
     sup-protocol::sup-protocol

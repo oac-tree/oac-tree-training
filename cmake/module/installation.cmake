@@ -14,7 +14,7 @@ install(EXPORT sequencer-training-targets FILE sequencer-training-targets.cmake 
 # -----------------------------------------------------------------------------
 
 # Add all targets to the build-tree export set
-export(TARGETS config-servers NAMESPACE sequencer-training:: FILE "${PROJECT_BINARY_DIR}/sequencer-training-targets.cmake")
+export(TARGETS config-servers cvvf-servers NAMESPACE sequencer-training:: FILE "${PROJECT_BINARY_DIR}/sequencer-training-targets.cmake")
 
 # Export the package for use from the build-tree (goes to $HOME/.cmake)
 if(COA_EXPORT_BUILD_TREE)
