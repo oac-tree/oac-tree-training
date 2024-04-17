@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure xmlns="http://codac.iter.org/sup/sequencer" version="1.0"
+           name="Procedure for testing the configuration servers of the Sequencer training"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+           xs:schemaLocation="http://codac.iter.org/sup/sequencer sequencer.xsd">
+    <Plugin>libsequencer-sup-config.so</Plugin>
+    <Sequence>
+        <ReadConfiguration name="Read signal generator configuration"
+            service="test:SignalGeneratorConfigServer"
+            outputVar="signal_generator_config"/>
+        <Output description="Signal generator configuration" fromVar="signal_generator_config"/>
+        <ReadConfiguration name="Read signal generator configuration for output 1"
+            service="test:SignalGeneratorConfigServer"
+            configName="out1"
+            outputVar="signal_generator_config.out1"/>
+        <!-- <Copy inputVar="signal_generator_config" outputVar="signal_generator_config_file" /> -->
+    </Sequence>
+    <Workspace>
+        <Local name="signal_generator_config" dynamicType="true" />
+        <File name="signal_generator_config_file" file="generator_cfg.json" pretty="true" />
+    </Workspace>
+</Procedure>

@@ -27,8 +27,6 @@
 #include <iostream>
 #include <thread>
 
-const std::string SERVICE_NAME = "SUP-EXAMPLES::ConfigMemoryServer";
-
 using namespace sequencer::training;
 
 int main(int argc, char* argv[])
