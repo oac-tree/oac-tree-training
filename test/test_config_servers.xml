@@ -5,18 +5,42 @@
            xs:schemaLocation="http://codac.iter.org/sup/sequencer sequencer.xsd">
     <Plugin>libsequencer-sup-config.so</Plugin>
     <Sequence>
-        <ReadConfiguration name="Read signal generator configuration"
+        <!-- <ReadConfiguration name="Read signal generator configuration"
             service="test:SignalGeneratorConfigServer"
             outputVar="signal_generator_config"/>
         <Output description="Signal generator configuration" fromVar="signal_generator_config"/>
         <ReadConfiguration name="Read signal generator configuration for output 1"
             service="test:SignalGeneratorConfigServer"
             configName="out1"
-            outputVar="signal_generator_config.out1"/>
+            outputVar="signal_generator_config.out1"/> -->
+        <Output description="Reference signal config"
+                fromVar="ref_signal_config"/>
+        <CVVFClient name="Validate reference signal config"
+            service="test:SignalGeneratorCVVFServer"
+            function="ValidateSignalRef"
+            inputVar="ref_signal_config"
+            resultVar="cvvf_result"/>
+        <Output description="CVVF result from validation of reference signal config"
+                fromVar="cvvf_result"/>
+        <CVVFClient name="Transform reference signal config"
+            service="test:SignalGeneratorCVVFServer"
+            function="TransformSignalRef"
+            inputVar="ref_signal_config"
+            outputVar="signal_generator_config"
+            resultVar="cvvf_result"/>
+        <Output description="CVVF result from tranformation of reference signal config"
+                fromVar="cvvf_result"/>
+        <Output description="Output of transformation of reference signal config"
+                fromVar="signal_generator_config"/>
         <!-- <Copy inputVar="signal_generator_config" outputVar="signal_generator_config_file" /> -->
     </Sequence>
     <Workspace>
         <Local name="signal_generator_config" dynamicType="true" />
+        <Local name="ref_signal_config"
+               type='{"type":"ReferenceSignal_t","attributes":[{"shape_ref":{"type":"uint32"}}]}'
+               value='{"shape_ref":0}' />
+        <Local name="cvvf_result" type='{"type":"bool"}' />
+        <Local name="true" type='{"type":"bool"}' value="true"/>
         <File name="signal_generator_config_file" file="generator_cfg.json" pretty="true" />
     </Workspace>
 </Procedure>
