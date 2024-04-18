@@ -20,26 +20,12 @@
  ******************************************************************************/
 
 #include "config_handler.h"
+#include "types.h"
 
 #include <sup/dto/anyvalue_helper.h>
 
 #include <algorithm>
 #include <exception>
-
-const std::string kOutput_1 = "out1";
-const std::string kOutput_2 = "out2";
-
-const sup::dto::AnyType signal_config_t = {{
-  { "shape", sup::dto::StringType },
-  { "freq", sup::dto::Float64Type },
-  { "phase", sup::dto::Float64Type }
-}, "Signal_t"};
-
-const sup::dto::AnyType generator_config_t = {{
-  { kOutput_1, signal_config_t },
-  { kOutput_2, signal_config_t },
-  { "active", sup::dto::BooleanType }
-}, "SignalGenerator_t" };
 
 namespace
 {
@@ -132,6 +118,8 @@ ProtocolResult SignalGeneratorConfigHandler::WriteConfiguration(
 
 namespace
 {
+using namespace sequencer::training;
+
 bool IsKnownDatasetName(const std::string& dataset_name)
 {
   if (dataset_name.empty())
@@ -182,9 +170,9 @@ bool IsValidSignalConfig(const sup::dto::AnyValue& signal_config, bool active)
     return true;
   }
   // Only specific shapes are allowed
-  static const std::vector<std::string> allowed_shapes = {"sine", "triangle", "sawtooth", "square"};
   auto shape = signal_config["shape"].As<std::string>();
-  if (std::find(allowed_shapes.begin(), allowed_shapes.end(), shape) == allowed_shapes.end())
+  if (std::find(kGeneratorValidShapes.begin(), kGeneratorValidShapes.end(), shape)
+      == kGeneratorValidShapes.end())
   {
     return false;
   }

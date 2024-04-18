@@ -20,26 +20,12 @@
  ******************************************************************************/
 
 #include "cvvf_functions.h"
+#include "types.h"
 
 #include <sup/dto/anyvalue_helper.h>
 
 #include <algorithm>
 #include <exception>
-
-const std::string kOutput_1 = "out1";
-const std::string kOutput_2 = "out2";
-
-const sup::dto::AnyType signal_config_t = {{
-  { "shape", sup::dto::StringType },
-  { "freq", sup::dto::Float64Type },
-  { "phase", sup::dto::Float64Type }
-}, "Signal_t"};
-
-const sup::dto::AnyType generator_config_t = {{
-  { kOutput_1, signal_config_t },
-  { kOutput_2, signal_config_t },
-  { "active", sup::dto::BooleanType }
-}, "SignalGenerator_t" };
 
 namespace
 {
@@ -70,9 +56,9 @@ bool SignalGeneratorShapeValidator::Process(const sup::dto::AnyValue& input,
                                             sup::dto::AnyValue& output)
 {
   (void)output;  // validation function doesn't produce output
-  static const std::vector<std::string> valid_shapes = {"sine", "triangle", "sawtooth", "square"};
   auto shape = input["shape"].As<std::string>();
-  return std::find(valid_shapes.begin(), valid_shapes.end(), shape) != valid_shapes.end();
+  return std::find(kGeneratorValidShapes.begin(), kGeneratorValidShapes.end(), shape)
+         != kGeneratorValidShapes.end();
 }
 
 }  // namespace training
