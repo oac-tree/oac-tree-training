@@ -37,7 +37,43 @@ class SignalGeneratorShapeValidator : public sup::cvvf::UserFunction
 public:
   SignalGeneratorShapeValidator();
 
-  ~SignalGeneratorShapeValidator();
+  virtual ~SignalGeneratorShapeValidator();
+
+  bool GetInputType(sup::dto::AnyType& input_type) const override;
+
+  bool GetOutputType(sup::dto::AnyType& output_type) const override;
+
+  bool Process(const sup::dto::AnyValue& input, sup::dto::AnyValue& output) override;
+private:
+};
+
+/**
+ * @brief CVVF function for validating a reference signal descriptor.
+ */
+class SignalGeneratorReferenceSignalValidator : public sup::cvvf::UserFunction
+{
+public:
+  SignalGeneratorReferenceSignalValidator();
+
+  virtual ~SignalGeneratorReferenceSignalValidator();
+
+  bool GetInputType(sup::dto::AnyType& input_type) const override;
+
+  bool GetOutputType(sup::dto::AnyType& output_type) const override;
+
+  bool Process(const sup::dto::AnyValue& input, sup::dto::AnyValue& output) override;
+private:
+};
+
+/**
+ * @brief CVVF function for transforming a reference signal descriptor in a signal configuration.
+ */
+class SignalGeneratorReferenceSignalTransformer : public sup::cvvf::UserFunction
+{
+public:
+  SignalGeneratorReferenceSignalTransformer();
+
+  virtual ~SignalGeneratorReferenceSignalTransformer();
 
   bool GetInputType(sup::dto::AnyType& input_type) const override;
 

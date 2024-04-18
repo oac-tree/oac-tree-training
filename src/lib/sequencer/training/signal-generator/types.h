@@ -49,6 +49,19 @@ const sup::dto::AnyType generator_config_t = {{
 
 const std::vector<std::string> kGeneratorValidShapes = {"sine", "triangle", "sawtooth", "square"};
 
+enum ReferenceSignal : sup::dto::uint32
+{
+  kSineRef = 0,
+  kTriangleRef,
+  kSawRef,
+  kSquareRef,
+  kInvalidRef
+};
+
+const sup::dto::AnyType reference_signal_config_t = {{
+  { "shape_ref", sup::dto::UnsignedInteger32Type }
+}, "ReferenceSignal_t"};
+
 }  // namespace training
 
 }  // namespace sequencer

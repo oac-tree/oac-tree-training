@@ -21,6 +21,26 @@ Overview:
 * Monitoring of plant system
 * High-level control of plant systems
 
+### PvAccess ping pong
+
+#### Prerequisites
+
+None
+
+#### Task description
+
+Write a first procedure that:
+
+* Hosts two PvAccess server variables of integer type and initializes them to zero
+* Listens to changes of these variables and increments the first one when it is less than or equal to the second one
+* Exits when the second variable becomes 1000
+
+Write a second procedure that:
+
+* Has two PvAccess client variables, corresponding to the above server variables
+* Listens to changes of these variables and increments the second one when it is less than the first
+* Exits when the second variable becomes 1000
+
 ### Basic SUP configuration
 
 #### Prerequisites

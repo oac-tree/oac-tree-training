@@ -48,10 +48,17 @@ CreateSignalGeneratorConfigServer(const std::string& service_name)
 std::unique_ptr<IServerStack>
 CreateSignalGeneratorCvvfServer(const std::string& service_name)
 {
-  std::unique_ptr<FunctionExecutor> function_executor{};
+  std::unique_ptr<FunctionExecutor> function_executor{new FunctionExecutor()};
   // register functions
   std::unique_ptr<UserFunction> shape_validator{new SignalGeneratorShapeValidator()};
-  function_executor->RegisterFunction("ValidateShape", std::move(shape_validator));
+  function_executor->RegisterFunction(kSignalGeneratorValidateShapeFunction,
+                                      std::move(shape_validator));
+  std::unique_ptr<UserFunction> signal_ref_validator{new SignalGeneratorReferenceSignalValidator()};
+  function_executor->RegisterFunction(kSignalGeneratorValidateSignalRefFunction,
+                                      std::move(signal_ref_validator));
+  std::unique_ptr<UserFunction> signal_ref_transform{new SignalGeneratorReferenceSignalTransformer()};
+  function_executor->RegisterFunction(kSignalGeneratorTransformSignalRefFunction,
+                                      std::move(signal_ref_transform));
   std::unique_ptr<IServerStack> server{
     new EPICSCVVFServerStack{service_name, std::move(function_executor)}};
   return server;

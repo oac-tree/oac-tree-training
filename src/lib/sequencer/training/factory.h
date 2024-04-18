@@ -32,6 +32,10 @@ namespace sequencer
 namespace training
 {
 
+const std::string kSignalGeneratorValidateShapeFunction = "ValidateShape";
+const std::string kSignalGeneratorValidateSignalRefFunction = "ValidateSignalRef";
+const std::string kSignalGeneratorTransformSignalRefFunction = "TransformSignalRef";
+
 std::unique_ptr<IServerStack>
 CreateSignalGeneratorConfigServer(const std::string& service_name);
 
