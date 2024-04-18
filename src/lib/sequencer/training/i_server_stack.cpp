@@ -19,7 +19,7 @@
  * of the distribution package.
  ******************************************************************************/
 
-#include "i_server_stack.h"
+#include <sequencer/training/i_server_stack.h>
 
 namespace sequencer
 {

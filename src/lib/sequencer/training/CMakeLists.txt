@@ -30,14 +30,18 @@ target_link_libraries(sequencer-training
 
 target_sources(sequencer-training
   PRIVATE
+    factory.cpp
     i_server_stack.cpp
     utils.cpp
 )
+
+add_subdirectory(signal-generator)
 
 # -- Installation --
 install(TARGETS sequencer-training EXPORT sequencer-training-targets LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 install(FILES
+  factory.h
   i_server_stack.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sequencer/training
 )

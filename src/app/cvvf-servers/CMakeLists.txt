@@ -11,19 +11,14 @@ target_include_directories(cvvf-servers
 
 target_sources(cvvf-servers
   PRIVATE
-    factory.cpp
     main.cpp
 )
 
-add_subdirectory(signal-generator)
-
-find_package(sup-config REQUIRED)
 find_package(sup-utils REQUIRED)
 
 target_link_libraries(cvvf-servers
   PRIVATE
     sequencer-training
-    sup-config::sup-cvvf
     sup-utils::sup-cli
 )
 

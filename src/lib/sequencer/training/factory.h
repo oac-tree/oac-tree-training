@@ -19,32 +19,27 @@
  * of the distribution package.
  ******************************************************************************/
 
-#include "factory.h"
+#ifndef SEQUENCER_TRAINING_FACTORY_H_
+#define SEQUENCER_TRAINING_FACTORY_H_
 
-#include <signal-generator/cvvf_functions.h>
+#include <sequencer/training/i_server_stack.h>
 
-#include <sequencer/training/utils.h>
-
-#include <sup/cvvf/function_executor.h>
+#include <memory>
+#include <string>
 
 namespace sequencer
 {
 namespace training
 {
-using namespace sup::cvvf;
 
 std::unique_ptr<IServerStack>
-CreateSignalGeneratorCvvfServer(const std::string& service_name)
-{
-  std::unique_ptr<FunctionExecutor> function_executor{};
-  // register functions
-  std::unique_ptr<UserFunction> shape_validator{new SignalGeneratorShapeValidator()};
-  function_executor->RegisterFunction("ValidateShape", std::move(shape_validator));
-  std::unique_ptr<IServerStack> server{
-    new EPICSCVVFServerStack{service_name, std::move(function_executor)}};
-  return server;
-}
+CreateSignalGeneratorConfigServer(const std::string& service_name);
+
+std::unique_ptr<IServerStack>
+CreateSignalGeneratorCvvfServer(const std::string& service_name);
 
 }  // namespace training
 
 }  // namespace sequencer
+
+#endif  // SEQUENCER_TRAINING_FACTORY_H_

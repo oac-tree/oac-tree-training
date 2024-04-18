@@ -19,7 +19,7 @@
  * of the distribution package.
  ******************************************************************************/
 
-#include "factory.h"
+#include <sequencer/training/factory.h>
 
 #include <sup/cli/command_line_parser.h>
 

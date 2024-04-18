@@ -19,7 +19,7 @@
  * of the distribution package.
  ******************************************************************************/
 
-#include "utils.h"
+#include <sequencer/training/utils.h>
 
 namespace sequencer
 {

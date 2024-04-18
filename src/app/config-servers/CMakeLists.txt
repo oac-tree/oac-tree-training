@@ -11,19 +11,14 @@ target_include_directories(config-servers
 
 target_sources(config-servers
   PRIVATE
-    factory.cpp
     main.cpp
 )
 
-add_subdirectory(signal-generator)
-
-find_package(sup-config REQUIRED)
 find_package(sup-utils REQUIRED)
 
 target_link_libraries(config-servers
   PRIVATE
     sequencer-training
-    sup-config::sup-config
     sup-utils::sup-cli
 )
 
