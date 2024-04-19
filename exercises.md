@@ -1,0 +1,44 @@
+# Sequencer training exercises
+
+Overview:
+
+* EPICS ping/pong
+* Basic configuration of plant system: choice of config, cvvf and config
+* Monitoring of plant system
+* High-level control of plant systems
+
+## PvAccess ping pong
+
+Write a first procedure that:
+
+* Hosts two PvAccess server variables of integer type and initializes them to zero
+* Listens to changes of these variables and increments the first one when it is less than or equal to the second one
+* Exits when the second variable becomes 1000
+
+Write a second procedure that:
+
+* Has two PvAccess client variables, corresponding to the above server variables
+* Listens to changes of these variables and increments the second one when it is less than the first
+* Exits when the second variable becomes 1000
+
+## Basic SUP configuration
+
+Prerequisites:
+
+* Configuration server
+* Multiple CVVF servers
+* Different configuration sets (json files)
+
+Write a procedure that:
+
+* Provides the user with a choice of different configurations sets to use for configuring a system;
+* Applies the necessary CVVF functions for transformation and validation;
+* Uploads the configuration to the system.
+
+Extra:
+
+* Upon failure of CVVF or system configuration, provide a clear error message of which step failed.
+
+## Monitoring of plant system
+
+## High-level control of plant systems
