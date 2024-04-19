@@ -5,16 +5,11 @@
            xs:schemaLocation="http://codac.iter.org/sup/sequencer sequencer.xsd">
     <Plugin>libsequencer-sup-config.so</Plugin>
     <Sequence>
-        <!-- <ReadConfiguration name="Read signal generator configuration"
+        <ReadConfiguration name="Initial signal generator configuration"
             service="test:SignalGeneratorConfigServer"
             outputVar="signal_generator_config"/>
         <Output description="Signal generator configuration" fromVar="signal_generator_config"/>
-        <ReadConfiguration name="Read signal generator configuration for output 1"
-            service="test:SignalGeneratorConfigServer"
-            configName="out1"
-            outputVar="signal_generator_config.out1"/> -->
-        <Output description="Reference signal config"
-                fromVar="ref_signal_config"/>
+        <Output description="Reference signal config" fromVar="ref_signal_config"/>
         <CVVFClient name="Validate reference signal config"
             service="test:SignalGeneratorCVVFServer"
             function="ValidateSignalRef"
@@ -26,12 +21,17 @@
             service="test:SignalGeneratorCVVFServer"
             function="TransformSignalRef"
             inputVar="ref_signal_config"
-            outputVar="signal_generator_config"
+            outputVar="signal_generator_config.out1"
             resultVar="cvvf_result"/>
-        <Output description="CVVF result from tranformation of reference signal config"
-                fromVar="cvvf_result"/>
         <Output description="Output of transformation of reference signal config"
                 fromVar="signal_generator_config"/>
+        <CVVFClient name="Validate updated config"
+            service="test:SignalGeneratorCVVFServer"
+            function="ValidateShape"
+            inputVar="signal_generator_config.out1"
+            resultVar="cvvf_result"/>
+        <Output description="CVVF result from validation of full config"
+                fromVar="cvvf_result"/>
         <!-- <Copy inputVar="signal_generator_config" outputVar="signal_generator_config_file" /> -->
     </Sequence>
     <Workspace>
