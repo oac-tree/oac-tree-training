@@ -12,7 +12,16 @@ if [ ! -d $1 ]; then
   exit 1
 fi
 
+CONFIG_SERVERS_EXE="$1/bin/config-servers"
+CVVF_SERVERS_EXE="$1/bin/cvvf-servers"
+
+if [ ! -x "${CONFIG_SERVERS_EXE}" -o ! -x "${CVVF_SERVERS_EXE}" ]; then
+  echo "Provided path does not contain the required executables."
+  echo "Has the project been built correctly?"
+  exit 1
+fi
+
 cd $1
 
-/usr/bin/screen -d -m -S SeqTrain_config "$1"/bin/config-servers -s "${SERVER_PREFIX}"
-/usr/bin/screen -d -m -S SeqTrain_cvvf "$1"/bin/cvvf-servers -s "${SERVER_PREFIX}"
+/usr/bin/screen -d -m -S SeqTrain_config "${CONFIG_SERVERS_EXE}" -s "${SERVER_PREFIX}"
+/usr/bin/screen -d -m -S SeqTrain_cvvf "${CVVF_SERVERS_EXE}" -s "${SERVER_PREFIX}"
