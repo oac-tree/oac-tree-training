@@ -18,6 +18,11 @@ Install the packages related to the sequencer:
 ```bash
 sudo dnf install codac-core-7.2-sequencer codac-core-7.2-sequencer-gui codac-core-7.2-sequencer-plugin-control codac-core-7.2-sequencer-plugin-epics codac-core-7.2-sequencer-plugin-math codac-core-7.2-sequencer-plugin-sup
 ```
+Install the GUI:
+
+```bash
+sudo dnf install codac-core-7.2-sequencer-gui
+```
 
 ## Build the test servers
 
