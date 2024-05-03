@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Sequence>
+        <Wait timeout="0.1" />
+        <Output fromVar="var1" description="Printing a workspace variable" />
+    </Sequence>
+    <Workspace>
+        <Local name="var1"
+               type='{"type":"var1_t","attributes":[
+                            {"enabled":{"type":"bool"}},
+                            {"setpoint":{"type":"float64"}}]}'
+                value='{"enabled":true,"setpoint":2.7}' />
+    </Workspace>
+</Procedure>
