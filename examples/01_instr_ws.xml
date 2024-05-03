@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
-    <Sequence>
-        <Wait timeout="0.1" />
-        <Output fromVar="var1" description="Printing a workspace variable" />
+    <Sequence name="Root sequence">
+        <Wait name="Short wait" timeout="0.1" />
+        <Output name="Print variable" fromVar="var1"
+                description="Printing a workspace variable" />
     </Sequence>
     <Workspace>
         <Local name="var1"
