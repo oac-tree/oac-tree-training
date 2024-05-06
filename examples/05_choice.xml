@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Choice name="Root choice" varName="choice">
+        <Message text="world!"/>
+        <Message text="Hello,"/>
+    </Choice>
+    <Workspace>
+        <Local name="choice" type='{"type":"uint32_arr","multiplicity":3,
+                                    "element":{"type":"uint32"}}'
+                             value="[1,0]"/>
+    </Workspace>
+</Procedure>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <ParallelSequence name="Root parallel" isRoot="true" successThreshold="2">
+        <Wait timeout="1"/>
+        <Wait timeout="2"/>
+        <Wait timeout="120"/>
+    </ParallelSequence>
+    <Workspace>
+    </Workspace>
+</Procedure>

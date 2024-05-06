@@ -4,6 +4,8 @@
         <Wait name="Short wait" timeout="0.1" />
         <Output name="Print variable" fromVar="var1"
                 description="Printing a workspace variable" />
+        <Output name="Print variable field" fromVar="var1.enabled"
+                description="Printing a workspace variable field" />
     </Sequence>
     <Workspace>
         <Local name="var1"

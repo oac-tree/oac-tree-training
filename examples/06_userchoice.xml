@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <UserChoice name="Root choice">
+        <Message name="Hello" text="Hello, world!"/>
+        <Message name="Alarm" text="Alarm"/>
+    </UserChoice>
+    <Workspace>
+    </Workspace>
+</Procedure>

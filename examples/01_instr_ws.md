@@ -7,4 +7,3 @@ Instruction statuses:
 * Success: instruction has finished successfully
 * Failure: instruction has finished with failure
 * Running: instruction has asynchronously executing child instruction(s)
-

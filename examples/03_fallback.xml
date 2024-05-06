@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Fallback name="Root fallback" isRoot="true">
+        <Include path="Fail"/>
+        <Message text="First success"/>
+        <Message text="Last success"/>
+    </Fallback>
+    <Inverter name="Fail">
+        <Wait/>
+    </Inverter>
+    <Workspace>
+    </Workspace>
+</Procedure>
