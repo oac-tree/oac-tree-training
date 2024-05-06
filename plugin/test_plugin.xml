@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Plugin>./libfail.so</Plugin>
+    <Fail text="Failure instruction from plugin"/>
+    <Workspace>
+    </Workspace>
+</Procedure>
