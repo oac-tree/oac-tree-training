@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Sequence name="Root sequence" isRoot="true">
+        <CopyToProcedure file="utils/basic.xml" inputVar="start_index" outputVar="start_index"/>
+        <CopyToProcedure file="utils/basic.xml" inputVar="end_index" outputVar="end_index"/>
+        <IncludeProcedure file="utils/basic.xml" path="Count"/>
+    </Sequence>
+    <Workspace>
+        <Local name="start_index" type='{"type":"uint32"}' value="1" />
+        <Local name="end_index" type='{"type":"uint32"}' value="8" />
+    </Workspace>
+</Procedure>

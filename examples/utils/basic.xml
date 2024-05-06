@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Inverter name="Fail">
+        <Wait/>
+    </Inverter>
+    <ForceSuccess name="Count">
+        <Repeat maxCount="-1">
+            <Sequence>
+                <LessThanOrEqual leftVar="start_index" rightVar="end_index"/>
+                <Output fromVar="start_index"/>
+                <Increment varName="start_index"/>
+            </Sequence>
+        </Repeat>
+    </ForceSuccess>
+    <Workspace>
+        <Local name="start_index" type='{"type":"uint32"}' />
+        <Local name="end_index" type='{"type":"uint32"}' />
+    </Workspace>
+</Procedure>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Sequence name="Root sequence" isRoot="true">
+        <Inverter name="Double inverted">
+            <Include path="Fail"/>
+        </Inverter>
+        <Message text="After double inverter"/>
+        <ForceSuccess name="Always success">
+            <Include path="Fail"/>
+        </ForceSuccess>
+        <Message text="After ForceSuccess"/>
+        <Repeat maxCount="3">
+            <Message text="Repeating..."/>
+        </Repeat>
+    </Sequence>
+    <Inverter name="Fail">
+        <Wait/>
+    </Inverter>
+    <Workspace>
+    </Workspace>
+</Procedure>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Sequence name="Root sequence" isRoot="true">
+        <For elementVar="i" arrayVar="arr">
+            <Output fromVar="i" description="For loop..."/>
+        </For>
+    </Sequence>
+    <Workspace>
+        <Local name="arr" type='{"type":"uint32_arr",
+                                 "element":{"type":"uint32"}}'
+               value="[2,4,6]"/>
+        <Local name="i" type='{"type":"uint32"}' value='0' />
+    </Workspace>
+</Procedure>

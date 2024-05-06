@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <ParallelSequence name="Root parallel">
+        <Listen varNames="flag">
+            <Sequence>
+                <Output fromVar="flag"/>
+                <Condition name="Condition" varName="flag" />
+            </Sequence>
+        </Listen>
+        <Sequence>
+            <Wait timeout="1"/>
+            <Copy inputVar="zero" outputVar="flag"/>
+        </Sequence>
+    </ParallelSequence>
+    <Workspace>
+        <Local name="flag" type='{"type":"uint16"}' value="1" />
+        <Local name="zero" type='{"type":"uint16"}' value="0" />
+    </Workspace>
+</Procedure>
