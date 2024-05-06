@@ -19,10 +19,9 @@ FailInstruction::~FailInstruction() = default;
 ExecutionStatus FailInstruction::ExecuteSingleImpl(UserInterface& ui, Workspace& ws)
 {
   std::string message;
-  if (!GetAttributeValueAs(Constants::TEXT_ATTRIBUTE_NAME, ws, ui, message))
+  if (GetAttributeValueAs(Constants::TEXT_ATTRIBUTE_NAME, ws, ui, message))
   {
-    return ExecutionStatus::FAILURE;
+    ui.Message(message);
   }
-  ui.Message(message);
   return ExecutionStatus::FAILURE;
 }
