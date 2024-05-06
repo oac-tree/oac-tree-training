@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Plugin>libsequencer-pvxs.so</Plugin>
+    <Listen varNames="var">
+        <Sequence>
+            <LessThan leftVar="var.value" rightVar="limit"/>
+            <Output fromVar="var"/>
+        </Sequence>
+    </Listen>
+    <Workspace>
+        <PvAccessServer name="var"
+                        channel="training::test::variable"
+                        type='{"type":"training::test::Type/v1.0","attributes":[{"value":{"type":"uint16"}}]}'
+                        value='{"value":0}'/>
+        <Local name="limit" type='{"type":"uint16"}' value="100" />
+    </Workspace>
+</Procedure>
