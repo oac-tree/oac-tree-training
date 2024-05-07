@@ -21,7 +21,7 @@ if [ ! -x "${CONFIG_SERVERS_EXE}" -o ! -x "${CVVF_SERVERS_EXE}" ]; then
   exit 1
 fi
 
-cd $1
+echo "Launching ${CONFIG_SERVERS_EXE} and ${CVVF_SERVERS_EXE} with prefix ${SERVER_PREFIX}"
 
 /usr/bin/screen -d -m -S SeqTrain_config "${CONFIG_SERVERS_EXE}" -s "${SERVER_PREFIX}"
 /usr/bin/screen -d -m -S SeqTrain_cvvf "${CVVF_SERVERS_EXE}" -s "${SERVER_PREFIX}"
