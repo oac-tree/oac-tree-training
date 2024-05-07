@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
     <Sequence name="Root sequence" isRoot="true">
+        <Include path="Sleep" to="1.0"/>
         <Message text="First instruction"/>
         <Include file="utils/basic.xml" path="Fail"/>
         <Message text="Last instruction"/>
     </Sequence>
+    <Wait name="Sleep" timeout="$to"/>
     <Workspace>
     </Workspace>
 </Procedure>

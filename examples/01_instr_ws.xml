@@ -2,6 +2,7 @@
 <Procedure>
     <Sequence name="Root sequence">
         <Wait name="Short wait" timeout="0.1" />
+        <Wait name="Another short wait" timeout="@short_timeout" />
         <Output name="Print variable" fromVar="var1"
                 description="Printing a workspace variable" />
         <Output name="Print variable field" fromVar="var1.enabled"
@@ -12,6 +13,8 @@
                type='{"type":"var1_t","attributes":[
                             {"enabled":{"type":"bool"}},
                             {"setpoint":{"type":"float64"}}]}'
-                value='{"enabled":true,"setpoint":2.7}' />
+               value='{"enabled":true,"setpoint":2.7}' />
+        <Local name="short_timeout" type='{"type":"float64"}'
+               value="0.1"/>
     </Workspace>
 </Procedure>
