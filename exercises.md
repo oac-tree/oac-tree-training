@@ -71,17 +71,32 @@ struct ReferenceSignal_t
 
 ### Tasks
 
+#### CVVF
+
 Write a procedure that:
 
-* Provides the user with a choice of different shapes (sine, triangle, sawtooth and square) for each of the two outputs and create the appropriate `ReferenceSignal_t` structure;
-* Validate and transform this and store it in the correct substructure of the full (local) configuration structure;
-* Validate the output of the previous;
+* Provides the user with a choice of different shapes (sine, triangle, sawtooth and square) for a signal generator output and create the appropriate `ReferenceSignal_t` structure;
+* Validate and transform this structure using the CVVF client calls `ValidateSignalRef` and `TransformSignalRef`;
+* Output the result using the `Output` instruction.
+* Validate the output of the previous transformation using the CVVF client call `ValidateShape`;
+
+#### Configure
+
+Using the result from the previous task, create a procedure that:
+
+* Reads the current configuration into a local variable
+* Asks the user to select one of the different shapes, validate, transform and validate again (see previous task)
+* Write this output into the first output of the configuration `out1`
+* Idem for `out2`.
 * Set the `active` flag to `true` locally;
 * Upon success, write this configuration to the SUP config server.
+* (optional) Store this configuration to a file variable.
 
-Extra:
+#### Extra
 
-* Create a separate procedure that resets the configuration to its default (all zeros).
+How would you create a daemon procedure that listens for the two reference inputs (shapes of output 1 and 2) and automatically performs all the validation, transformation and final configuration? How can we get the result of this operation?
+
+Can you also create a separate procedure that resets the configuration to its default (all zeros)?
 
 ## Monitoring of plant system
 
