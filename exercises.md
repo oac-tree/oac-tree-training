@@ -23,21 +23,65 @@ Write a second procedure that:
 
 ## Basic SUP configuration
 
-Prerequisites:
+### Prerequisites
 
-* Configuration server
-* Multiple CVVF servers
-* Different configuration sets (json files)
+* Build servers
+* Launch them using `scripts/launch_servers.sh <BUILD-DIR>`
+
+### Config server
+
+The configuration server is hosted with server name `<USER>:SignalGeneratorConfigServer` and serves the following configuration structure:
+
+```txt
+struct SignalGenerator_t
+    out1: struct Signal_t
+        shape: string ""
+        freq: float64 0.0
+        phase: float64 0.0
+    out2: struct Signal_t
+        shape: string ""
+        freq: float64 0.0
+        phase: float64 0.0
+    active: bool false
+```
+
+The full structure is accessible using the default empty dataset name, while the two main substructures can be addressed using the dataset names `out1` and `out2`.
+
+The configuration server does some internal validation on itself. The constraints are as follows:
+
+* When `active` is false, an empty default structure is accepted (all zero's or empty strings)
+* Otherwise:
+  * `shape` has to be one of `sine`, `triangle`, `sawtooth` or `square`
+  * `freq` should be between 10 and 10000 (10Hz to 10kHz)
+
+### CVVF server
+
+The CVVF server is hosted with server name `<USER>:SignalGeneratorCVVFServer` and serves the following CVVF functions:
+
+* `ValidateShape`: validates a structure with type `Signal_t` (the two substructures of the full configuration) according to the constraints of `shape` and `freq` mentioned in the configuration server; note that this validation function will not succeed when given an default structure (zeros);
+* `ValidateSignalRef`: validates a structure with type `ReferenceSignal_t` (see below); it only accepts `shape_ref` values from 0 to 3 (corresponding to the four different supported shapes);
+* `TransformSignalRef`: transforms a valid structure with type `ReferenceSignal_t` into a structure of type `Signal_t`, with the provided shape, a frequency of 440Hz and zero phase.
+
+The `ReferenceSignal_t` type is defined as follows:
+
+```txt
+struct ReferenceSignal_t
+    shape_ref: uint32 0
+```
+
+### Tasks
 
 Write a procedure that:
 
-* Provides the user with a choice of different configurations sets to use for configuring a system;
-* Applies the necessary CVVF functions for transformation and validation;
-* Uploads the configuration to the system.
+* Provides the user with a choice of different shapes (sine, triangle, sawtooth and square) for each of the two outputs and create the appropriate `ReferenceSignal_t` structure;
+* Validate and transform this and store it in the correct substructure of the full (local) configuration structure;
+* Validate the output of the previous;
+* Set the `active` flag to `true` locally;
+* Upon success, write this configuration to the SUP config server.
 
 Extra:
 
-* Upon failure of CVVF or system configuration, provide a clear error message of which step failed.
+* Create a separate procedure that resets the configuration to its default (all zeros).
 
 ## Monitoring of plant system
 
