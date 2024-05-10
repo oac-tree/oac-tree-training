@@ -98,6 +98,13 @@ How would you create a daemon procedure that listens for the two reference input
 
 Can you also create a separate procedure that resets the configuration to its default (all zeros)?
 
-## Monitoring of plant system
+## Monitoring of system statuses
 
-## High-level control of plant systems
+There are four different subsystems that publish their overall health status as a boolean. The PvAccess variables are:
+
+* `training::system01::status`
+* `training::system02::status`
+* `training::system03::status`
+* `training::system04::status`
+
+Create a procedure that monitors (listens to) these four statuses and publishes its own global status. The global status is a boolean that is true only when all four system statuses are true.

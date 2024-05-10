@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Plugin>libsequencer-pvxs.so</Plugin>
+    <Sequence isRoot="true">
+        <Include path="Init"/>
+        <Repeat maxCount="-1">
+            <Sequence>
+                <Wait timeout="5.0"/>
+                <Copy inputVar="false" outputVar="sys_03"/>
+                <Wait timeout="3.0"/>
+                <Copy inputVar="true" outputVar="sys_03"/>
+            </Sequence>
+        </Repeat>
+        <Output fromVar="total"/>
+    </Sequence>
+    <Sequence name="Init">
+        <Copy inputVar="true" outputVar="sys_01"/>
+        <Copy inputVar="true" outputVar="sys_02"/>
+        <Copy inputVar="true" outputVar="sys_03"/>
+        <Copy inputVar="true" outputVar="sys_04"/>
+    </Sequence>
+    <Workspace>
+        <PvAccessServer name="sys_01" channel="training::system01::status"
+                        type='{"type":"bool"}'
+                        value='true'/>
+        <PvAccessServer name="sys_02" channel="training::system02::status"
+                        type='{"type":"bool"}'
+                        value='true'/>
+        <PvAccessServer name="sys_03" channel="training::system03::status"
+                        type='{"type":"bool"}'
+                        value='true'/>
+        <PvAccessServer name="sys_04" channel="training::system04::status"
+                        type='{"type":"bool"}'
+                        value='true'/>
+        <Local name="true" type='{"type":"bool"}' value='true'/>
+        <Local name="false" type='{"type":"bool"}' value='false'/>
+    </Workspace>
+</Procedure>
