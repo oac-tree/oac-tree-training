@@ -16,4 +16,4 @@
   * Existing plugins: see [Bitbucket](https://git.iter.org/projects/COA)
   * Control, Epics and mathexpr: see respective folders under `plugins` (sup plugin will be handled during exercises)
 * GUI presentation/demo
-* Exercises
+* Exercises: see `exercises.md`

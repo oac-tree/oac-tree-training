@@ -3,11 +3,11 @@
 ## Get a working CCS7.2 environment
 
 * CCS container
-* Shared VM
+* Shared VM: `ccs720-2`
 
 ## Install necessary packages
 
-Install the packages required for SUP configuration and CVVF:
+Install the packages required for SUP configuration and CVVF (only for container):
 
 ```bash
 sudo dnf install codac-core-7.2-sup-config codac-core-7.2-sup-epics
