@@ -6,19 +6,19 @@
     <Plugin>libsequencer-sup-config.so</Plugin>
     <Sequence>
         <ReadConfiguration name="Initial signal generator configuration"
-            service="test:SignalGeneratorConfigServer"
+            service="codac-dev:SignalGeneratorConfigServer"
             outputVar="signal_generator_config"/>
         <Output description="Signal generator configuration" fromVar="signal_generator_config"/>
         <Output description="Reference signal config" fromVar="ref_signal_config"/>
         <CVVFClient name="Validate reference signal config"
-            service="test:SignalGeneratorCVVFServer"
+            service="codac-dev:SignalGeneratorCVVFServer"
             function="ValidateSignalRef"
             inputVar="ref_signal_config"
             resultVar="cvvf_result"/>
         <Output description="CVVF result from validation of reference signal config"
                 fromVar="cvvf_result"/>
         <CVVFClient name="Transform reference signal config"
-            service="test:SignalGeneratorCVVFServer"
+            service="codac-dev:SignalGeneratorCVVFServer"
             function="TransformSignalRef"
             inputVar="ref_signal_config"
             outputVar="signal_generator_config.out1"
@@ -26,7 +26,7 @@
         <Output description="Output of transformation of reference signal config"
                 fromVar="signal_generator_config"/>
         <CVVFClient name="Validate updated config"
-            service="test:SignalGeneratorCVVFServer"
+            service="codac-dev:SignalGeneratorCVVFServer"
             function="ValidateShape"
             inputVar="signal_generator_config.out1"
             resultVar="cvvf_result"/>

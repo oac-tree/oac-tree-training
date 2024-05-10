@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SERVER_PREFIX="test"
+SERVER_PREFIX=$(whoami)
 
 if [ $# -ne 1 ]; then
   echo "Please provide build directory as command line parameter"
