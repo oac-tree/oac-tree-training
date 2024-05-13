@@ -6,7 +6,7 @@
 
 ## Agenda
 
-* Presentation:
+* Presentation: [ITER_D_7RV4D7](https://user.iter.org/default.aspx?uid=7RV4D7)
   * Goals & requirements
   * Behavior trees (history, usage, key properties, mechanics, strengths)
 * Sequencer basics: see `examples` folder
