@@ -5,7 +5,6 @@ Overview:
 * EPICS ping/pong
 * Basic configuration of plant system: choice of config, cvvf and config
 * Monitoring of plant system
-* High-level control of plant systems
 
 ## PvAccess ping pong
 
