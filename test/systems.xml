@@ -21,17 +21,13 @@
     </Sequence>
     <Workspace>
         <PvAccessServer name="sys_01" channel="training::system01::status"
-                        type='{"type":"bool"}'
-                        value='true'/>
+                        type='{"type":"bool"}'/>
         <PvAccessServer name="sys_02" channel="training::system02::status"
-                        type='{"type":"bool"}'
-                        value='true'/>
+                        type='{"type":"bool"}'/>
         <PvAccessServer name="sys_03" channel="training::system03::status"
-                        type='{"type":"bool"}'
-                        value='true'/>
+                        type='{"type":"bool"}'/>
         <PvAccessServer name="sys_04" channel="training::system04::status"
-                        type='{"type":"bool"}'
-                        value='true'/>
+                        type='{"type":"bool"}'/>
         <Local name="true" type='{"type":"bool"}' value='true'/>
         <Local name="false" type='{"type":"bool"}' value='false'/>
     </Workspace>

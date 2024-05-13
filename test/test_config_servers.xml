@@ -6,19 +6,19 @@
     <Plugin>libsequencer-sup-config.so</Plugin>
     <Sequence>
         <ReadConfiguration name="Initial signal generator configuration"
-            service="codac-dev:SignalGeneratorConfigServer"
+            service="@cfg_server"
             outputVar="signal_generator_config"/>
         <Output description="Signal generator configuration" fromVar="signal_generator_config"/>
         <Output description="Reference signal config" fromVar="ref_signal_config"/>
         <CVVFClient name="Validate reference signal config"
-            service="codac-dev:SignalGeneratorCVVFServer"
+            service="@cvvf_server"
             function="ValidateSignalRef"
             inputVar="ref_signal_config"
             resultVar="cvvf_result"/>
         <Output description="CVVF result from validation of reference signal config"
                 fromVar="cvvf_result"/>
         <CVVFClient name="Transform reference signal config"
-            service="codac-dev:SignalGeneratorCVVFServer"
+            service="@cvvf_server"
             function="TransformSignalRef"
             inputVar="ref_signal_config"
             outputVar="signal_generator_config.out1"
@@ -26,21 +26,29 @@
         <Output description="Output of transformation of reference signal config"
                 fromVar="signal_generator_config"/>
         <CVVFClient name="Validate updated config"
-            service="codac-dev:SignalGeneratorCVVFServer"
+            service="@cvvf_server"
             function="ValidateShape"
             inputVar="signal_generator_config.out1"
             resultVar="cvvf_result"/>
         <Output description="CVVF result from validation of full config"
                 fromVar="cvvf_result"/>
-        <!-- <Copy inputVar="signal_generator_config" outputVar="signal_generator_config_file" /> -->
+        <Copy inputVar="signal_generator_config" outputVar="signal_generator_config_file" />
     </Sequence>
     <Workspace>
+        <!-- Server names -->
+        <Local name="cfg_server" type='{"type":"string"}' value='"codac-dev:SignalGeneratorConfigServer"'/>
+        <Local name="cvvf_server" type='{"type":"string"}' value='"codac-dev:SignalGeneratorCVVFServer"'/>
+        <!-- Configuration cache -->
         <Local name="signal_generator_config" dynamicType="true" />
+        <!-- Reference config -->
         <Local name="ref_signal_config"
                type='{"type":"ReferenceSignal_t","attributes":[{"shape_ref":{"type":"uint32"}}]}'
                value='{"shape_ref":0}' />
+        <!-- Result of CVVF validation/transformation -->
         <Local name="cvvf_result" type='{"type":"bool"}' />
-        <Local name="true" type='{"type":"bool"}' value="true"/>
+        <!-- File for configuration storage -->
         <File name="signal_generator_config_file" file="generator_cfg.json" pretty="true" />
+        <!-- Constants -->
+        <Local name="true" type='{"type":"bool"}' value="true"/>
     </Workspace>
 </Procedure>

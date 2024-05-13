@@ -7,62 +7,66 @@
     <UserChoice>
         <Sequence name="Output signal generator configuration">
             <ReadConfiguration name="Read signal generator configuration"
-                service="codac-dev:SignalGeneratorConfigServer"
+                service="@cfg_server"
                 outputVar="config"/>
             <Output description="Signal generator configuration" fromVar="config"/>
         </Sequence>
         <Sequence name="Configure signal generator output 1">
             <ReadConfiguration name="Read signal generator configuration for output 1"
-                service="codac-dev:SignalGeneratorConfigServer"
+                service="@cfg_server"
                 configName="out1"
                 outputVar="config"/>
             <Output description="Previous configuration" fromVar="config"/>
             <Input description="Set configuration values" outputVar="config"/>
             <WriteConfiguration name="Write signal generator configuration for output 1"
-                service="codac-dev:SignalGeneratorConfigServer"
+                service="@cfg_server"
                 configName="out1"
                 inputVar="config"/>
             <Output description="New configuration" fromVar="config"/>
         </Sequence>
         <Sequence name="Configure signal generator output 2">
             <ReadConfiguration name="Read signal generator configuration for output 2"
-                service="codac-dev:SignalGeneratorConfigServer"
+                service="@cfg_server"
                 configName="out2"
                 outputVar="config"/>
             <Output description="Previous configuration" fromVar="config"/>
             <Input description="Set configuration values" outputVar="config"/>
             <WriteConfiguration name="Write signal generator configuration for output 2"
-                service="codac-dev:SignalGeneratorConfigServer"
+                service="@cfg_server"
                 configName="out2"
                 inputVar="config"/>
             <Output description="New configuration" fromVar="config"/>
         </Sequence>
         <Sequence name="Activate signal generator">
             <ReadConfiguration name="Read signal generator configuration"
-                service="codac-dev:SignalGeneratorConfigServer"
+                service="@cfg_server"
                 outputVar="config"/>
             <Output description="Previous configuration" fromVar="config"/>
             <Copy inputVar="true" outputVar="config.active" />
             <WriteConfiguration name="Write signal generator configuration"
-                service="codac-dev:SignalGeneratorConfigServer"
+                service="@cfg_server"
                 inputVar="config"/>
             <Output description="New configuration" fromVar="config"/>
         </Sequence>
         <Sequence name="Deactivate signal generator">
             <ReadConfiguration name="Read signal generator configuration"
-                service="codac-dev:SignalGeneratorConfigServer"
+                service="@cfg_server"
                 outputVar="config"/>
             <Output description="Previous configuration" fromVar="config"/>
             <Copy inputVar="false" outputVar="config.active" />
             <WriteConfiguration name="Write signal generator configuration"
-                service="codac-dev:SignalGeneratorConfigServer"
+                service="@cfg_server"
                 inputVar="config"/>
             <Output description="New configuration" fromVar="config"/>
         </Sequence>
     </UserChoice>
     <Workspace>
+        <!-- Server names -->
+        <Local name="cfg_server" type='{"type":"string"}' value='"codac-dev:SignalGeneratorConfigServer"'/>
+        <!-- Configuration cache -->
+        <Local name="config" dynamicType="true" />
+        <!-- Constants -->
         <Local name="true" type='{"type":"bool"}' value="true"/>
         <Local name="false" type='{"type":"bool"}' value="false"/>
-        <Local name="config" dynamicType="true" />
     </Workspace>
 </Procedure>
