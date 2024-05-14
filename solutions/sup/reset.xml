@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Plugin>libsequencer-sup-config.so</Plugin>
+    <Sequence isRoot="true">
+        <ReadConfiguration name="Read current signal generator configuration"
+            service="codac-dev:SignalGeneratorConfigServer"
+            outputVar="signal_generator_config"/>
+        <Output description="Current signal generator configuration" fromVar="signal_generator_config"/>
+        <Message text="Reset first output"/>
+        <Include name="Zero out first output" path="ResetSignal"
+                 signal_cfg="signal_generator_config.out1"/>
+        <Message text="Reset second output"/>
+        <Include name="Zero out second output" path="ResetSignal"
+                 signal_cfg="signal_generator_config.out2"/>
+        <Copy name="Disable configuration" inputVar="false"
+              outputVar="signal_generator_config.active" />
+        <Output description="New signal generator configuration" fromVar="signal_generator_config"/>
+        <Message text="Writing configuration to server..."/>
+        <WriteConfiguration name="Write signal generator configuration"
+            service="codac-dev:SignalGeneratorConfigServer"
+            inputVar="signal_generator_config"/>
+        <Message text="Configuration successful!"/>
+    </Sequence>
+    <Sequence name="ResetSignal">
+        <Copy name="Copy to cache" inputVar="$signal_cfg" outputVar="signal" />
+        <Copy name="Empty shape" inputVar="empty" outputVar="signal.shape" />
+        <Copy name="Zero frequency" inputVar="zero" outputVar="signal.freq" />
+        <Copy name="Zero phase" inputVar="zero" outputVar="signal.phase" />
+        <Copy name="Copy back from zero cache" inputVar="signal" outputVar="$signal_cfg" />
+    </Sequence>
+    <Workspace>
+        <!-- Full configuration cache -->
+        <Local name="signal_generator_config" dynamicType="true" />
+        <!-- Single signal configuration cache -->
+        <Local name="signal" dynamicType="true" />
+        <!-- Zero and empty constants -->
+        <Local name="empty" type='{"type":"string"}' value='""'/>
+        <Local name="zero" type='{"type":"float64"}' value='0'/>
+        <Local name="false" type='{"type":"bool"}' value="false"/>
+        <!-- CVVF variables -->
+        <Local name="cvvf_result" type='{"type":"bool"}' />
+        <File name="signal_generator_config_file" file="generator_cfg.json" pretty="true" />
+    </Workspace>
+</Procedure>

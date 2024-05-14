@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Plugin>libsequencer-pvxs.so</Plugin>
+    <Sequence>
+        <WaitForVariables varType="PvAccessClient" timeout="3.0"/>
+        <Inverter>
+            <Listen varNames="ping,pong">
+                <Sequence>
+                    <LessThan leftVar="pong" rightVar="limit"/>
+                    <Fallback>
+                        <LessThanOrEqual leftVar="ping" rightVar="pong"/>
+                        <Sequence>
+                            <Copy inputVar="pong" outputVar="cache"/>
+                            <Increment varName="cache"/>
+                            <Increment varName="pong"/>
+                            <Output fromVar="cache"/>
+                        </Sequence>
+                    </Fallback>
+                </Sequence>
+            </Listen>
+        </Inverter>
+    </Sequence>
+    <Workspace>
+        <PvAccessClient name="ping"
+                        channel="training::ping"
+                        type='{"type":"uint64"}'/>
+        <PvAccessClient name="pong"
+                        channel="training::pong"
+                        type='{"type":"uint64"}'/>
+        <PvAccessClient name="limit"
+                        channel="training::pingpong_limit"
+                        type='{"type":"uint64"}'/>
+        <Local name="cache"
+               type='{"type":"uint64"}'/>
+    </Workspace>
+</Procedure>

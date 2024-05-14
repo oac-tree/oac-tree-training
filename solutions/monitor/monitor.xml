@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Plugin>libsequencer-pvxs.so</Plugin>
+    <Sequence>
+        <WaitForVariables varType="PvAccessClient" timeout="3.0"/>
+        <Listen varNames="sys_01,sys_02,sys_03,sys_04" forceSuccess="true">
+            <Fallback>
+                <Sequence>
+                    <Equals leftVar="sys_01" rightVar="true"/>
+                    <Equals leftVar="sys_02" rightVar="true"/>
+                    <Equals leftVar="sys_03" rightVar="true"/>
+                    <Equals leftVar="sys_04" rightVar="true"/>
+                    <Copy inputVar="true" outputVar="global_status"/>
+                </Sequence>
+                <Copy inputVar="false" outputVar="global_status"/>
+            </Fallback>
+        </Listen>
+    </Sequence>
+    <Workspace>
+        <PvAccessServer name="global_status" channel="training::system::status"
+                        type='{"type":"bool"}'
+                        value='true'/>
+        <PvAccessClient name="sys_01" channel="training::system01::status"
+                        type='{"type":"bool"}' />
+        <PvAccessClient name="sys_02" channel="training::system02::status"
+                        type='{"type":"bool"}' />
+        <PvAccessClient name="sys_03" channel="training::system03::status"
+                        type='{"type":"bool"}' />
+        <PvAccessClient name="sys_04" channel="training::system04::status"
+                        type='{"type":"bool"}' />
+        <Local name="true" type='{"type":"bool"}' value='true'/>
+        <Local name="false" type='{"type":"bool"}' value='false'/>
+    </Workspace>
+</Procedure>

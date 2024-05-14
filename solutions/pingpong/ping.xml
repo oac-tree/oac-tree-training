@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Plugin>libsequencer-pvxs.so</Plugin>
+    <Inverter>
+        <Listen varNames="ping,pong">
+            <Sequence>
+                <LessThan leftVar="pong" rightVar="limit"/>
+                <Fallback>
+                    <LessThan leftVar="pong" rightVar="ping"/>
+                    <Sequence>
+                        <Increment varName="ping"/>
+                        <Output fromVar="ping"/>
+                    </Sequence>
+                </Fallback>
+            </Sequence>
+        </Listen>
+    </Inverter>
+    <Workspace>
+        <PvAccessServer name="ping"
+                        channel="training::ping"
+                        type='{"type":"uint64"}'
+                        value='0'/>
+        <PvAccessServer name="pong"
+                        channel="training::pong"
+                        type='{"type":"uint64"}'
+                        value='0'/>
+        <PvAccessServer name="limit"
+                        channel="training::pingpong_limit"
+                        type='{"type":"uint64"}'
+                        value='1000'/>
+    </Workspace>
+</Procedure>

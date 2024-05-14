@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Plugin>libsequencer-sup-config.so</Plugin>
+    <Sequence isRoot="true">
+        <ReadConfiguration name="Initial signal generator configuration"
+            service="codac-dev:SignalGeneratorConfigServer"
+            outputVar="signal_generator_config"/>
+        <Output description="Current signal generator configuration" fromVar="signal_generator_config"/>
+        <Message text="Configure first output"/>
+        <Include name="Select and configure first output" path="SelectConfigureSignal"
+                 outSignal="signal_generator_config.out1"/>
+        <Message text="Configure second output"/>
+        <Include name="Select and configure second output" path="SelectConfigureSignal"
+                 outSignal="signal_generator_config.out2"/>
+        <Copy name="Activate configuration" inputVar="true" outputVar="signal_generator_config.active" />
+        <Output description="New signal generator configuration" fromVar="signal_generator_config"/>
+        <Message text="Writing configuration to server..."/>
+        <WriteConfiguration name="Write signal generator configuration"
+            service="codac-dev:SignalGeneratorConfigServer"
+            inputVar="signal_generator_config"/>
+        <Message text="Configuration successful!"/>
+        <Copy name="Store configuration in file" inputVar="signal_generator_config"
+            outputVar="signal_generator_config_file" />
+    </Sequence>
+    <Sequence name="SelectConfigureSignal">
+        <Include name="Wave selection" path="SelectRefWave"/>
+        <CVVFClient name="Validate reference signal config"
+            service="codac-dev:SignalGeneratorCVVFServer"
+            function="ValidateSignalRef"
+            inputVar="ref_signal_config"
+            resultVar="cvvf_result"/>
+        <Equals name="Validate result" leftVar="cvvf_result" rightVar="true"/>
+        <CVVFClient name="Transform reference signal config"
+            service="codac-dev:SignalGeneratorCVVFServer"
+            function="TransformSignalRef"
+            inputVar="ref_signal_config"
+            outputVar="$outSignal"
+            resultVar="cvvf_result"/>
+        <Equals name="Validate result" leftVar="cvvf_result" rightVar="true"/>
+        <CVVFClient name="Validate updated config of first output"
+            service="codac-dev:SignalGeneratorCVVFServer"
+            function="ValidateShape"
+            inputVar="$outSignal"
+            resultVar="cvvf_result"/>
+        <Equals name="Validate result" leftVar="cvvf_result" rightVar="true"/>
+    </Sequence>
+    <UserChoice name="SelectRefWave" description="Select a reference wave">
+        <Copy name="Sine wave" inputVar="sine" outputVar="ref_signal_config.shape_ref" />
+        <Copy name="Triangle wave" inputVar="triangle" outputVar="ref_signal_config.shape_ref" />
+        <Copy name="Sawtooth wave" inputVar="sawtooth" outputVar="ref_signal_config.shape_ref" />
+        <Copy name="Square wave" inputVar="square" outputVar="ref_signal_config.shape_ref" />
+    </UserChoice>
+    <Workspace>
+        <!-- Full configuration cache -->
+        <Local name="signal_generator_config" dynamicType="true" />
+        <!-- Reference signal configuration -->
+        <Local name="ref_signal_config"
+               type='{"type":"ReferenceSignal_t","attributes":[{"shape_ref":{"type":"uint32"}}]}'
+               value='{"shape_ref":0}' />
+        <Local name="sine" type='{"type":"uint32"}' value='0'/>
+        <Local name="triangle" type='{"type":"uint32"}' value='1'/>
+        <Local name="sawtooth" type='{"type":"uint32"}' value='2'/>
+        <Local name="square" type='{"type":"uint32"}' value='3'/>
+        <!-- CVVF variables -->
+        <Local name="cvvf_result" type='{"type":"bool"}' />
+        <Local name="true" type='{"type":"bool"}' value="true"/>
+        <File name="signal_generator_config_file" file="generator_cfg.json" pretty="true" />
+    </Workspace>
+</Procedure>
