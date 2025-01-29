@@ -38,29 +38,27 @@ using namespace sup::cvvf;
 std::unique_ptr<IServerStack>
 CreateSignalGeneratorConfigServer(const std::string& service_name)
 {
-  std::unique_ptr<ConfigurationInterface>
-    signal_generator_handler{new SignalGeneratorConfigHandler()};
-  std::unique_ptr<IServerStack> server{
-    new EPICSConfigServerStack{service_name, std::move(signal_generator_handler)}};
+  auto signal_generator_handler = std::make_unique<SignalGeneratorConfigHandler>();
+  auto server =
+      std::make_unique<EPICSConfigServerStack>(service_name, std::move(signal_generator_handler));
   return server;
 }
 
 std::unique_ptr<IServerStack>
 CreateSignalGeneratorCvvfServer(const std::string& service_name)
 {
-  std::unique_ptr<FunctionExecutor> function_executor{new FunctionExecutor()};
+  auto function_executor = std::make_unique<FunctionExecutor>();
   // register functions
-  std::unique_ptr<UserFunction> shape_validator{new SignalGeneratorShapeValidator()};
+  auto shape_validator = std::make_unique<SignalGeneratorShapeValidator>();
   function_executor->RegisterFunction(kSignalGeneratorValidateShapeFunction,
                                       std::move(shape_validator));
-  std::unique_ptr<UserFunction> signal_ref_validator{new SignalGeneratorReferenceSignalValidator()};
+  auto signal_ref_validator = std::make_unique<SignalGeneratorReferenceSignalValidator>();
   function_executor->RegisterFunction(kSignalGeneratorValidateSignalRefFunction,
                                       std::move(signal_ref_validator));
-  std::unique_ptr<UserFunction> signal_ref_transform{new SignalGeneratorReferenceSignalTransformer()};
+  auto signal_ref_transform = std::make_unique<SignalGeneratorReferenceSignalTransformer>();
   function_executor->RegisterFunction(kSignalGeneratorTransformSignalRefFunction,
                                       std::move(signal_ref_transform));
-  std::unique_ptr<IServerStack> server{
-    new EPICSCVVFServerStack{service_name, std::move(function_executor)}};
+  auto server = std::make_unique<EPICSCVVFServerStack>(service_name, std::move(function_executor));
   return server;
 }
 
