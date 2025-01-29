@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
-    <Plugin>libsequencer-pvxs.so</Plugin>
+    <Plugin>liboac-tree-pvxs.so</Plugin>
     <Inverter>
         <Listen varNames="ping,pong">
             <Sequence>

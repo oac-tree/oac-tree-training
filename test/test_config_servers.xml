@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Procedure xmlns="http://codac.iter.org/sup/sequencer" version="1.0"
-           name="Procedure for testing the configuration servers of the Sequencer training"
+<Procedure xmlns="http://codac.iter.org/sup/oac-tree" version="1.0"
+           name="Procedure for testing the configuration servers of the oac-tree training"
            xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
-           xs:schemaLocation="http://codac.iter.org/sup/sequencer sequencer.xsd">
-    <Plugin>libsequencer-sup-config.so</Plugin>
+           xs:schemaLocation="http://codac.iter.org/sup/oac-tree oac-tree.xsd">
+    <Plugin>liboac-tree-sup-config.so</Plugin>
     <Sequence>
         <ReadConfiguration name="Initial signal generator configuration"
             service="@cfg_server"

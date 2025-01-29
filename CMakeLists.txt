@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13)
-project(sequencer-training VERSION 1.0.0)
+project(oac-tree-training VERSION 1.0.0)
 
 option(COA_BUILD_TESTS "Build unit tests" ON)
 option(COA_BUILD_DOCUMENTATION "Build documentation" OFF)

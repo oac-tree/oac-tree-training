@@ -1,9 +1,9 @@
 #include "fail_instruction.h"
 
-#include <sup/sequencer/constants.h>
-#include <sup/sequencer/instruction_registry.h>
-#include <sup/sequencer/user_interface.h>
-#include <sup/sequencer/workspace.h>
+#include <sup/oac-tree/constants.h>
+#include <sup/oac-tree/instruction_registry.h>
+#include <sup/oac-tree/user_interface.h>
+#include <sup/oac-tree/workspace.h>
 
 const std::string FailInstruction::Type = "Fail";
 static bool _fail_instruction_initialised_flag = RegisterGlobalInstruction<FailInstruction>();

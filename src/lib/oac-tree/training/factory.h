@@ -2,9 +2,9 @@
  * $HeadURL: $
  * $Id: $
  *
- * Project       : Sequencer training
+ * Project       : oac-tree training
  *
- * Description   : Training materials for the Sequencer.
+ * Description   : Training materials for the oac-tree.
  *
  * Author        : Walter Van Herck (IO)
  *
@@ -19,15 +19,15 @@
  * of the distribution package.
  ******************************************************************************/
 
-#ifndef SEQUENCER_TRAINING_FACTORY_H_
-#define SEQUENCER_TRAINING_FACTORY_H_
+#ifndef OAC_TREE_TRAINING_FACTORY_H_
+#define OAC_TREE_TRAINING_FACTORY_H_
 
-#include <sequencer/training/i_server_stack.h>
+#include <oac-tree/training/i_server_stack.h>
 
 #include <memory>
 #include <string>
 
-namespace sequencer
+namespace oac_tree
 {
 namespace training
 {
@@ -44,6 +44,6 @@ CreateSignalGeneratorCvvfServer(const std::string& service_name);
 
 }  // namespace training
 
-}  // namespace sequencer
+}  // namespace oac_tree
 
-#endif  // SEQUENCER_TRAINING_FACTORY_H_
+#endif  // OAC_TREE_TRAINING_FACTORY_H_

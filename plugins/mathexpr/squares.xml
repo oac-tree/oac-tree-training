@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
-    <Plugin>libsequencer-mathexpr.so</Plugin>
+    <Plugin>liboac-tree-mathexpr.so</Plugin>
     <Repeat maxCount="20">
         <Sequence>
             <MathExpression expression="y:=x^2"/>

@@ -1,6 +1,6 @@
 
 add_executable(cvvf-servers)
-add_executable(sequencer-training::cvvf-servers ALIAS cvvf-servers) # alias for build-tree usage
+add_executable(oac-tree-training::cvvf-servers ALIAS cvvf-servers) # alias for build-tree usage
 
 target_compile_features(cvvf-servers PRIVATE cxx_std_11)
 
@@ -18,11 +18,11 @@ find_package(sup-utils REQUIRED)
 
 target_link_libraries(cvvf-servers
   PRIVATE
-    sequencer-training
+    oac-tree-training
     sup-utils::sup-cli
 )
 
 # -- Installation --
 
-install(TARGETS cvvf-servers EXPORT sequencer-training-targets LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS cvvf-servers EXPORT oac-tree-training-targets LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 set_target_properties(cvvf-servers PROPERTIES EXPORT_NAME cvvf-servers)

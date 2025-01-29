@@ -2,9 +2,9 @@
  * $HeadURL: $
  * $Id: $
  *
- * Project       : Sequencer training
+ * Project       : oac-tree training
  *
- * Description   : Training materials for the Sequencer.
+ * Description   : Training materials for the oac-tree.
  *
  * Author        : Walter Van Herck (IO)
  *
@@ -19,15 +19,15 @@
  * of the distribution package.
  ******************************************************************************/
 
-#ifndef SEQUENCER_TRAINING_SIGNAL_GENERATOR_TYPES_H_
-#define SEQUENCER_TRAINING_SIGNAL_GENERATOR_TYPES_H_
+#ifndef OAC_TREE_TRAINING_SIGNAL_GENERATOR_TYPES_H_
+#define OAC_TREE_TRAINING_SIGNAL_GENERATOR_TYPES_H_
 
 #include <sup/dto/anytype.h>
 
 #include <string>
 #include <vector>
 
-namespace sequencer
+namespace oac_tree
 {
 namespace training
 {
@@ -64,6 +64,6 @@ const sup::dto::AnyType reference_signal_config_t = {{
 
 }  // namespace training
 
-}  // namespace sequencer
+}  // namespace oac_tree
 
-#endif  // SEQUENCER_TRAINING_SIGNAL_GENERATOR_TYPES_H_
+#endif  // OAC_TREE_TRAINING_SIGNAL_GENERATOR_TYPES_H_

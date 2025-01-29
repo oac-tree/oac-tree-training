@@ -1,0 +1,15 @@
+#  OAC_TREE_TRAINING_INCLUDE_DIRS - include directories
+#  OAC_TREE_TRAINING_LIBRARIES    - libraries to link against
+
+get_filename_component(OAC_TREE_TRAINING_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+if(TARGET oac-tree-training::config-servers OR TARGET oac-tree-training::cvvf-servers)
+else()
+  message(STATUS "oac-tree-training-config.cmake including ${OAC_TREE_TRAINING_CMAKE_DIR}/oac-tree-training-targets.cmake")
+  include("${OAC_TREE_TRAINING_CMAKE_DIR}/oac-tree-training-targets.cmake")
+endif()
+
+set(OAC_TREE_TRAINING_LIBRARIES oac-tree-training::config-servers oac-tree-training::cvvf-servers)
+
+message(STATUS "oac-tree-training-config.cmake in ${CMAKE_CURRENT_LIST_FILE}")
+message(STATUS "OAC_TREE_TRAINING_LIBRARIES ${OAC_TREE_TRAINING_LIBRARIES}")

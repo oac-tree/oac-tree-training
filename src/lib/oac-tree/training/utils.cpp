@@ -2,9 +2,9 @@
  * $HeadURL: $
  * $Id: $
  *
- * Project       : Sequencer training
+ * Project       : oac-tree training
  *
- * Description   : Training materials for the Sequencer.
+ * Description   : Training materials for the oac-tree.
  *
  * Author        : Walter Van Herck (IO)
  *
@@ -19,9 +19,9 @@
  * of the distribution package.
  ******************************************************************************/
 
-#include <sequencer/training/utils.h>
+#include <oac-tree/training/utils.h>
 
-namespace sequencer
+namespace oac_tree
 {
 namespace training
 {
@@ -50,4 +50,4 @@ EPICSCVVFServerStack::~EPICSCVVFServerStack() = default;
 
 }  // namespace training
 
-}  // namespace sequencer
+}  // namespace oac_tree

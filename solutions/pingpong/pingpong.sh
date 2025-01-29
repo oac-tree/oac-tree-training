@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SCRIPT_PATH=$(dirname "$0")
-APP=/opt/codac/bin/sequencer-cli
+APP=/opt/codac/bin/oac-tree-cli
 cd $SCRIPT_PATH
 
 echo "Launch procedure 1 in background"

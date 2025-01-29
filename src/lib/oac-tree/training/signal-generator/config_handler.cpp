@@ -2,9 +2,9 @@
  * $HeadURL: $
  * $Id: $
  *
- * Project       : Sequencer training
+ * Project       : oac-tree training
  *
- * Description   : Training materials for the Sequencer.
+ * Description   : Training materials for the oac-tree.
  *
  * Author        : Walter Van Herck (IO)
  *
@@ -25,7 +25,7 @@
 #include <sup/dto/anyvalue_helper.h>
 
 #include <algorithm>
-#include <exception>
+#include <stdexcept>
 
 namespace
 {
@@ -36,7 +36,7 @@ bool IsValidConfiguration(const sup::dto::AnyValue& config);
 bool IsValidSignalConfig(const sup::dto::AnyValue& signal_config, bool active);
 }  // unnamed namespace
 
-namespace sequencer
+namespace oac_tree
 {
 namespace training
 {
@@ -114,11 +114,11 @@ ProtocolResult SignalGeneratorConfigHandler::WriteConfiguration(
 
 }  // namespace training
 
-}  // namespace sequencer
+}  // namespace oac_tree
 
 namespace
 {
-using namespace sequencer::training;
+using namespace oac_tree::training;
 
 bool IsKnownDatasetName(const std::string& dataset_name)
 {

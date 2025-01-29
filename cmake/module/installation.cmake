@@ -4,44 +4,44 @@
 # https://gitlab.kitware.com/cmake/community/-/wikis/doc/tutorials/Exporting-and-Importing-Targets
 # -----------------------------------------------------------------------------
 
-set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/sequencer-training)
+set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/oac-tree-training)
 
 # exporting targets to a script and installing it
-install(EXPORT sequencer-training-targets FILE sequencer-training-targets.cmake NAMESPACE sequencer-training:: DESTINATION ${INSTALL_CONFIGDIR})
+install(EXPORT oac-tree-training-targets FILE oac-tree-training-targets.cmake NAMESPACE oac-tree-training:: DESTINATION ${INSTALL_CONFIGDIR})
 
 # -----------------------------------------------------------------------------
 # Exporting
 # -----------------------------------------------------------------------------
 
 # Add all targets to the build-tree export set
-export(TARGETS config-servers cvvf-servers NAMESPACE sequencer-training:: FILE "${PROJECT_BINARY_DIR}/sequencer-training-targets.cmake")
+export(TARGETS config-servers cvvf-servers NAMESPACE oac-tree-training:: FILE "${PROJECT_BINARY_DIR}/oac-tree-training-targets.cmake")
 
 # Export the package for use from the build-tree (goes to $HOME/.cmake)
 if(COA_EXPORT_BUILD_TREE)
   set(CMAKE_EXPORT_PACKAGE_REGISTRY ON)
-  export(PACKAGE sequencer-training)
+  export(PACKAGE oac-tree-training)
 endif()
 
 # -----------------------------------------------------------------------------
-# Creating and installing sequencer-training-config.cmake
+# Creating and installing oac-tree-training-config.cmake
 # -----------------------------------------------------------------------------
 
 include(CMakePackageConfigHelpers)
 
 # to use in the build tree
-configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/config/sequencer-training-config.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/sequencer-training-config.cmake
+configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/config/oac-tree-training-config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/oac-tree-training-config.cmake
     INSTALL_DESTINATION ${INSTALL_CONFIGDIR}
 )
 
 # to use in install tree
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/sequencer-training-config.cmake DESTINATION ${INSTALL_CONFIGDIR})
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/oac-tree-training-config.cmake DESTINATION ${INSTALL_CONFIGDIR})
 
 # -----------------------------------------------------------------------------
-# Create and install sequencer-training-config-version.cmake file
+# Create and install oac-tree-training-config-version.cmake file
 # -----------------------------------------------------------------------------
 
-write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/sequencer-training-config-version.cmake VERSION
+write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/oac-tree-training-config-version.cmake VERSION
     ${PROJECT_VERSION} COMPATIBILITY AnyNewerVersion)
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/sequencer-training-config-version.cmake DESTINATION ${INSTALL_CONFIGDIR})
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/oac-tree-training-config-version.cmake DESTINATION ${INSTALL_CONFIGDIR})

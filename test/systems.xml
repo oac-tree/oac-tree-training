@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
-    <Plugin>libsequencer-pvxs.so</Plugin>
+    <Plugin>liboac-tree-pvxs.so</Plugin>
     <Sequence isRoot="true">
         <Include path="Init"/>
         <Repeat maxCount="-1">

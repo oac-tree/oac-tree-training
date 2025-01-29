@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
-    <Plugin>libsequencer-sup-config.so</Plugin>
+    <Plugin>liboac-tree-sup-config.so</Plugin>
     <Sequence isRoot="true">
         <ReadConfiguration name="Initial signal generator configuration"
             service="codac-dev:SignalGeneratorConfigServer"

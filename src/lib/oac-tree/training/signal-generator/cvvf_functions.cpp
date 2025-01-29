@@ -2,9 +2,9 @@
  * $HeadURL: $
  * $Id: $
  *
- * Project       : Sequencer training
+ * Project       : oac-tree training
  *
- * Description   : Training materials for the Sequencer.
+ * Description   : Training materials for the oac-tree.
  *
  * Author        : Walter Van Herck (IO)
  *
@@ -33,7 +33,7 @@ namespace
 
 }  // unnamed namespace
 
-namespace sequencer
+namespace oac_tree
 {
 namespace training
 {
@@ -140,7 +140,7 @@ bool SignalGeneratorReferenceSignalTransformer::Process(const sup::dto::AnyValue
 
 }  // namespace training
 
-}  // namespace sequencer
+}  // namespace oac_tree
 
 namespace
 {

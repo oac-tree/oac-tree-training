@@ -2,9 +2,9 @@
  * $HeadURL: $
  * $Id: $
  *
- * Project       : Sequencer training
+ * Project       : oac-tree training
  *
- * Description   : Training materials for the Sequencer.
+ * Description   : Training materials for the oac-tree.
  *
  * Author        : Walter Van Herck (IO)
  *
@@ -19,21 +19,15 @@
  * of the distribution package.
  ******************************************************************************/
 
-#ifndef SEQUENCER_TRAINING_I_SERVER_STACK_H_
-#define SEQUENCER_TRAINING_I_SERVER_STACK_H_
+#include <oac-tree/training/i_server_stack.h>
 
-namespace sequencer
+namespace oac_tree
 {
 namespace training
 {
-class IServerStack
-{
-public:
-  virtual ~IServerStack();
-};
+
+IServerStack::~IServerStack() = default;
 
 }  // namespace training
 
-}  // namespace sequencer
-
-#endif  // SEQUENCER_TRAINING_I_SERVER_STACK_H_
+}  // namespace oac_tree

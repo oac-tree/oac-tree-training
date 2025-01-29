@@ -1,4 +1,4 @@
-# Sequencer training
+# oac-tree training
 
 ## Get a working CCS7.2 environment
 
@@ -13,16 +13,16 @@ Install the packages required for SUP configuration and CVVF (only for container
 sudo dnf install codac-core-7.2-sup-config codac-core-7.2-sup-epics
 ```
 
-Install the packages related to the sequencer:
+Install the packages related to the oac-tree:
 
 ```bash
-sudo dnf install codac-core-7.2-sequencer codac-core-7.2-sequencer-gui codac-core-7.2-sequencer-plugin-control codac-core-7.2-sequencer-plugin-epics codac-core-7.2-sequencer-plugin-math codac-core-7.2-sequencer-plugin-sup
+sudo dnf install codac-core-7.2-oac-tree codac-core-7.2-oac-tree-gui codac-core-7.2-oac-tree-plugin-control codac-core-7.2-oac-tree-plugin-epics codac-core-7.2-oac-tree-plugin-math codac-core-7.2-oac-tree-plugin-sup
 ```
 
 Install the GUI:
 
 ```bash
-sudo dnf install codac-core-7.2-sequencer-gui
+sudo dnf install codac-core-7.2-oac-tree-gui
 ```
 
 ## Build the test servers

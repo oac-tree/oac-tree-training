@@ -2,9 +2,9 @@
  * $HeadURL: $
  * $Id: $
  *
- * Project       : Sequencer training
+ * Project       : oac-tree training
  *
- * Description   : Training materials for the Sequencer.
+ * Description   : Training materials for the oac-tree.
  *
  * Author        : Walter Van Herck (IO)
  *
@@ -19,7 +19,7 @@
  * of the distribution package.
  ******************************************************************************/
 
-#include <sequencer/training/factory.h>
+#include <oac-tree/training/factory.h>
 
 #include <sup/cli/command_line_parser.h>
 
@@ -27,14 +27,14 @@
 #include <iostream>
 #include <thread>
 
-using namespace sequencer::training;
+using namespace oac_tree::training;
 
 int main(int argc, char* argv[])
 {
   sup::cli::CommandLineParser parser;
   parser.SetDescription(
       /*header*/ "",
-      "The program instantiates the configuration servers for the Sequencer training.");
+      "The program instantiates the configuration servers for the oac-tree training.");
   parser.AddHelpOption();
 
   parser.AddOption({"-s", "--service-prefix"}, "Prefix to use for all configuration service names")

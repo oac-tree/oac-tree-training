@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
-    <Plugin>libsequencer-sup-config.so</Plugin>
+    <Plugin>liboac-tree-sup-config.so</Plugin>
     <Sequence name="SelectConfigureSignal" isRoot="true">
         <Include name="Wave selection" path="SelectRefWave"/>
         <CVVFClient name="Validate reference signal config"
