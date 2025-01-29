@@ -2,8 +2,6 @@
 add_executable(config-servers)
 add_executable(oac-tree-training::config-servers ALIAS config-servers) # alias for build-tree usage
 
-target_compile_features(config-servers PRIVATE cxx_std_11)
-
 target_include_directories(config-servers
   PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}

@@ -3,6 +3,13 @@
 include(GNUInstallDirs)
 include(CTest)
 
+# -----------------------------------------------------------------------------
+# C++ version
+# -----------------------------------------------------------------------------
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 # Detecting CODAC environment
 if(NOT COA_NO_CODAC)
   # cmake warns for the existance of ``<PackageName>_ROOT`` (CODAC_ROOT in this case) variables and ignores them

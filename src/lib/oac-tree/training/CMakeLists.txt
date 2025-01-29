@@ -1,8 +1,6 @@
 add_library(oac-tree-training SHARED "")
 add_library(oac-tree-training::oac-tree-training ALIAS oac-tree-training) # alias for build-tree usage
 
-target_compile_features(oac-tree-training PRIVATE cxx_std_11)
-
 set_target_properties(oac-tree-training PROPERTIES
   EXPORT_NAME oac-tree-training
   SOVERSION ${LIBSOVERSION}

@@ -2,8 +2,6 @@
 add_executable(cvvf-servers)
 add_executable(oac-tree-training::cvvf-servers ALIAS cvvf-servers) # alias for build-tree usage
 
-target_compile_features(cvvf-servers PRIVATE cxx_std_11)
-
 target_include_directories(cvvf-servers
   PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
