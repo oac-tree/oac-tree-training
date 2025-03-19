@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+  <Plugin>liboac-tree-pvxs.so</Plugin>
+  <Repeat isRoot="true" maxCount="1440">
+    <Sequence>
+      <Wait timeout="0.3"/>
+      <Increment varName="day_minutes"/>
+    </Sequence>
+  </Repeat>
+  <Workspace>
+    <PvAccessClient channel="greenhouse:minutes" name="day_minutes" type='{"type":"int32"}'/>
+  </Workspace>
+</Procedure>

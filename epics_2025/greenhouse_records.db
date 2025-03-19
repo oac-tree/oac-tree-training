@@ -1,0 +1,73 @@
+record(mbbi, "TEMP:PUMP1:MODE")
+{
+    field(DESC, "Heat pump mode")
+    field(INP, "0")
+    field(PINI, "YES")
+    field(ZRVL, "0")
+    field(ZRST, "Idle")
+    field(ONVL, "1")
+    field(ONST, "Heating")
+    field(TWVL, "2")
+    field(TWST, "Cooling")
+}
+
+record(mbbi, "TEMP:PUMP1:FAILURE")
+{
+    field(DESC, "Heat pump failure")
+    field(INP, "0")
+    field(PINI, "YES")
+    field(ZRVL, "0")
+    field(ZRST, "OK")
+    field(ONVL, "1")
+    field(ONST, "FAILURE")
+    field(ONSV, "MAJOR")
+}
+
+record(mbbi, "TEMP:PUMP2:MODE")
+{
+    field(DESC, "Heat pump mode")
+    field(INP, "0")
+    field(PINI, "YES")
+    field(ZRVL, "0")
+    field(ZRST, "Idle")
+    field(ONVL, "1")
+    field(ONST, "Heating")
+    field(TWVL, "2")
+    field(TWST, "Cooling")
+}
+
+record(mbbi, "TEMP:PUMP2:FAILURE")
+{
+    field(DESC, "Heat pump failure")
+    field(INP, "0")
+    field(PINI, "YES")
+    field(ZRVL, "0")
+    field(ZRST, "OK")
+    field(ONVL, "1")
+    field(ONST, "FAILURE")
+    field(ONSV, "MAJOR")
+}
+
+record(mbbi, "TEMP:OPSTATE")
+{
+    field(DESC, "Temperature control state")
+    field(ZRST, "Idle")
+    field(ZRVL, "0")
+    field(ONST, "Reduced Heating")
+    field(ONVL, "1")
+    field(TWST, "Max Heating")
+    field(TWVL, "2")
+    field(THST, "Reduced Cooling")
+    field(THVL, "3")
+    field(FRST, "Max Cooling")
+    field(FRVL, "4")
+    field(FVST, "Fault")
+    field(FVVL, "5")
+    field(VAL, "0")
+}
+
+record(longin, "TEMP:N-PUMPS")
+{
+    field(DESC, "Number of available pumps")
+    field(VAL, "0")
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+  <Plugin>liboac-tree-ca.so</Plugin>
+  <Plugin>liboac-tree-mathexpr.so</Plugin>
+  <Sequence isRoot="true">
+    <WaitForVariables timeout="5.0" varType="PvAccessClient"/>
+    <WaitForVariables timeout="5.0" varType="ChannelAccessClient"/>
+    <ParallelSequence>
+      <Listen name="set available pumps" varNames="Pump1_failure,Pump2_failure">
+        <MathExpression expression="Number_available_pumps:=2-Pump1_failure-Pump2_failure"/>
+      </Listen>
+      <Listen name="Set Operational State" varNames="Pump1_mode,Pump2_mode">
+        <Fallback>
+          <Sequence name="Pumps are deactivated">
+            <LessThanOrEqual leftVar="Number_available_pumps" rightVar="one"/>
+          </Sequence>
+          <Sequence name="PumpX -&gt; 0; PumpY -&gt; 0">
+            <MathExpression expression="condition:=true; if (Pump1_mode==0 and Pump2_mode==0) Operational_state:=0; else condition:=false"/>
+            <Condition varName="condition"/>
+          </Sequence>
+          <Sequence name="PumpX -&gt; 1; PumpY -&gt; 0">
+            <MathExpression expression="condition:=true; if ((Pump1_mode==1 and Pump2_mode==0) or (Pump1_mode==0 and Pump2_mode==1)) Operational_state:=1; else condition:=false"/>
+            <Condition varName="condition"/>
+          </Sequence>
+          <Sequence name="PumpX -&gt; 1; PumpY -&gt; 1">
+            <MathExpression expression="condition:=true; if (Pump1_mode==1 and Pump2_mode==1) Operational_state:=2; else condition:=false"/>
+            <Condition varName="condition"/>
+          </Sequence>
+          <Sequence name="PumpX -&gt; 2; PumpY -&gt; 0">
+            <MathExpression expression="condition:=true; if ((Pump1_mode==2 and Pump2_mode==0) or (Pump1_mode==0 and Pump2_mode==2)) Operational_state:=3; else condition:=false"/>
+            <Condition varName="condition"/>
+          </Sequence>
+          <Sequence name="PumpX -&gt; 2; PumpY -&gt; 2">
+            <MathExpression expression="condition:=true; if (Pump1_mode==2 and Pump2_mode==2) Operational_state:=4; else condition:=false"/>
+            <Condition varName="condition"/>
+          </Sequence>
+          <Sequence name="PumpX -&gt; 2; PumpY -&gt; 1 # FAIL">
+            <MathExpression expression="condition:=true; if ((Pump1_mode==2 and Pump2_mode==1) or (Pump1_mode==1 and Pump2_mode==2)) Operational_state:=5; else condition:=false"/>
+            <Condition varName="condition"/>
+          </Sequence>
+        </Fallback>
+      </Listen>
+      <Listen varNames="Operational_state" forceSuccess="true">
+        <Sequence name="deactivate pumps">
+          <Equals leftVar="Operational_state" rightVar="failed_pumps"/>
+          <Copy inputVar="one" outputVar="Pump1_failure"/>
+          <Copy inputVar="one" outputVar="Pump2_failure"/>
+        </Sequence>
+      </Listen>
+    </ParallelSequence>
+  </Sequence>
+  <Workspace>
+    <ChannelAccessClient channel="TEMP:PUMP1:MODE" name="Pump1_mode" type='{"type":"int32"}'/>
+    <ChannelAccessClient channel="TEMP:PUMP1:FAILURE" name="Pump1_failure" type='{"type":"int32"}'/>
+    <ChannelAccessClient channel="TEMP:PUMP2:MODE" name="Pump2_mode" type='{"type":"int32"}'/>
+    <ChannelAccessClient channel="TEMP:PUMP2:FAILURE" name="Pump2_failure" type='{"type":"int32"}'/>
+    <ChannelAccessClient channel="TEMP:OPSTATE" name="Operational_state" type='{"type":"int32"}'/>
+    <ChannelAccessClient channel="TEMP:N-PUMPS" name="Number_available_pumps" type='{"type":"int32"}'/>
+    <Local name="failed_pumps" type='{"type":"int32"}' value="5"/>
+    <Local name="one" type='{"type":"int32"}' value="1"/>
+    <Local name="condition" type='{"type":"bool"}' value="false"/>
+  </Workspace>
+</Procedure>

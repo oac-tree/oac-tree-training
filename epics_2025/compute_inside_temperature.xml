@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+  <Plugin>liboac-tree-ca.so</Plugin>
+  <Plugin>liboac-tree-mathexpr.so</Plugin>
+  <Plugin>liboac-tree-pvxs.so</Plugin>
+  <Sequence isRoot="true">
+    <WaitForVariables timeout="5.0" varType="PvAccessClient"/>
+    <WaitForVariables timeout="5.0" varType="ChannelAccessClient"/>
+    <Copy inputVar="In_temperature" outputVar="in_temp_total"/>
+    <Listen varNames="day_minutes">
+      <Fallback>
+        <GreaterThanOrEqual name="Check if Pumps are working" leftVar="Operational_state" rightVar="Pumps_disabled"/>
+        <Sequence>
+          <MathExpression name="compute temperature difference" expression="temperature_difference:=Out_temperature-In_temperature"/>
+          <Fallback name="compute Pumps input">
+            <Sequence>
+              <MathExpression name="if (Operational_state==0) Pump_input:=0" expression="condition:=true; if (Operational_state==0) Pump_input:=0; else condition:=false"/>
+              <Condition varName="condition"/>
+            </Sequence>
+            <Sequence>
+              <MathExpression name="if (Operational_state==1) Pump_input:=3" expression="condition:=true; if (Operational_state==1) Pump_input:=3; else condition:=false"/>
+              <Condition varName="condition"/>
+            </Sequence>
+            <Sequence>
+              <MathExpression name="if (Operational_state==2) Pump_input:=6" expression="condition:=true; if (Operational_state==2) Pump_input:=6; else condition:=false"/>
+              <Condition varName="condition"/>
+            </Sequence>
+            <Sequence>
+              <MathExpression name="if (Operational_state==3) Pump_input:=-3" expression="condition:=true; if (Operational_state==3) Pump_input:=-3; else condition:=false"/>
+              <Condition varName="condition"/>
+            </Sequence>
+            <Sequence>
+              <MathExpression name="if (Operational_state==4) Pump_input:=-6" expression="condition:=true; if (Operational_state==4) Pump_input:=-6; else condition:=false"/>
+              <Condition varName="condition"/>
+            </Sequence>
+          </Fallback>
+          <Sequence>
+            <MathExpression name="difference between in/out temperature contribution to temperature change" expression="diff_contribution:=temperature_difference/5+mod(temperature_difference/5,5)"/>
+            <MathExpression name="Inside temperature change" expression="in_temp_change:=(diff_contribution+Pump_input)/60"/>
+            <MathExpression name="current inside temperature" expression="in_temp_total:=in_temp_total+in_temp_change"/>
+            <Copy inputVar="in_temp_total" outputVar="In_temperature"/>
+          </Sequence>
+        </Sequence>
+      </Fallback>
+    </Listen>
+  </Sequence>
+  <Workspace>
+    <ChannelAccessClient channel="TEMP:OPSTATE" name="Operational_state" type='{"type":"int32"}'/>
+    <PvAccessClient channel="greenhouse:in_temperature" name="In_temperature" type='{"type":"int32"}'/>
+    <PvAccessClient channel="greenhouse:out_temp" name="Out_temperature" type='{"type":"int32"}'/>
+    <Local name="temperature_difference" type='{"type":"int32"}' value="0"/>
+    <Local name="Pump_input" type='{"type":"int32"}' value="0"/>
+    <Local name="Pumps_disabled" type='{"type":"int32"}' value="5"/>
+    <PvAccessClient channel="greenhouse:minutes" name="day_minutes" type='{"type":"int32"}'/>
+    <Local name="condition" type='{"type":"bool"}' value="false"/>
+    <Local name="diff_contribution" type='{"type":"int32"}' value="0"/>
+    <Local name="in_temp_change" type='{"type":"float64"}' value="0.0"/>
+    <Local name="in_temp_total" type='{"type":"float64"}' value="0.0"/>
+  </Workspace>
+</Procedure>

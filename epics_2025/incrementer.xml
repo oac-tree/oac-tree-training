@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+  <Plugin>liboac-tree-pvxs.so</Plugin>
+  <Repeat isRoot="true" maxCount="-1">
+    <Sequence>
+      <Increment varName="pv_counter"/>
+      <Wait timeout="1.0"/>
+    </Sequence>
+  </Repeat>
+  <Workspace>
+    <PvAccessServer channel="training::epics::pv_counter" name="pv_counter" type='{"type":"int32"}' value="0"/>
+  </Workspace>
+</Procedure>

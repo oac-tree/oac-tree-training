@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+  <Plugin>liboac-tree-mathexpr.so</Plugin>
+  <Plugin>liboac-tree-pvxs.so</Plugin>
+  <Sequence isRoot="true">
+    <MathExpression expression="pi:=4*atan(1)"/>
+    <WaitForVariables timeout="0.0" varType="PvAccessClient"/>
+    <Listen varNames="day_minutes">
+      <Sequence>
+        <MathExpression expression="Out_temperature:=(Min_temp+Max_temp)/2+(Max_temp-Min_temp)/2 * sin(pi * (day_minutes - Sunrise_minutes) / (Sunset_minutes - Sunrise_minutes))"/>
+        <Output fromVar="Out_temperature"/>
+      </Sequence>
+    </Listen>
+  </Sequence>
+  <Workspace>
+    <PvAccessClient channel="greenhouse:minutes" name="day_minutes" type='{"type":"int32"}'/>
+    <Local name="Max_temp" type='{"type":"int32"}' value="24"/>
+    <Local name="Min_temp" type='{"type":"int32"}' value="6"/>
+    <PvAccessServer channel="greenhouse:out_temp" name="Out_temperature" type='{"type":"int32"}' value="0"/>
+    <Local name="pi" type='{"type":"float64"}' value="0.0"/>
+    <Local name="Sunrise_minutes" type='{"type":"int32"}' value="405"/>
+    <Local name="Sunset_minutes" type='{"type":"int32"}' value="1110"/>
+  </Workspace>
+</Procedure>
