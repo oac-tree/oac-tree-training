@@ -11,6 +11,7 @@
   * Develop a procedure to start a timer when a specific condition is met on a PVAccessClient variable.
   
 ## Greenhouse simulation
+### Temperature
   * launch the CA database with softIOC:
   /opt/codac/epics/bin/linux-x86_64/softIoc -d greenhouse_records.db &
   * launch oac-tree-gui and load the following scripts:
@@ -21,3 +22,10 @@
   * develop a script to change the values of the PUMP modes
   * develop a script to reset the pumps when they are in failure mode
   * develop a script that changes the mode of the Pumps depeding in the current inside temperature and defines limits to that temperature
+
+### Humidity
+  * launch RPC server with:
+  python greenhouse_humidiity_control.py &
+  * develop a script that calls the RPC server in path greenhouse:get_out_humidity and copies it to a PvAccessServer variable called Humidity
+  * Extend that same script to update the inner humidity of the greenhouse in time (use a listen for time and call the RPC in greenhouse:get_in_humidity)
+  * Extend again the script to maintain the humidity between 85 and 95%, use the RPC greenhouse:activate_sprinklers to raise the humidity and greenhouse:activate_ventilation to lower it
