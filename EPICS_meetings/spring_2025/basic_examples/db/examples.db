@@ -1,0 +1,5 @@
+record(longin, "EXAMPLES:CA_LONG")
+{
+    field(DESC, "Some number")
+    field(VAL, "0")
+}
