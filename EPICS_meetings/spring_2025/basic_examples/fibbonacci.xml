@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
+    <Plugin>liboac-tree-mathexpr.so</Plugin>
     <Sequence isRoot="true">
-        <Input name="Fibbonacci series until which value?" outputVar="max_count"/>
+        <Input description="Compute how many Fibbonacci numbers?" outputVar="max_count"/>
+        <GreaterThanOrEqual leftVar="max_count" rightVar="one"/>
+        <Output fromVar="fib_val"/>
+        <Decrement varName="max_count"/>
         <Repeat maxCount="@max_count">
             <Sequence>
                 <Copy inputVar="fib_val" outputVar="temp_past"/>
-                <Repeat maxCount="@past_val">
-                    <Increment varName="fib_val"/>
-                </Repeat>
+                <MathExpression expression="fib_val:=fib_val + past_val"/>
                 <Output fromVar="fib_val"/>
                 <Copy inputVar="temp_past" outputVar="past_val"/>
             </Sequence>
         </Repeat>
     </Sequence>
     <Workspace>
-        <Local name="elem" type='{"type":"uint32"}' value="0"/>
         <Local name="fib_val" type='{"type":"int32"}' value="1"/>
         <Local name="past_val" type='{"type":"int32"}' value="0"/>
-        <Local name="max_count" type='{"type":"int32"}' value="5"/>
         <Local name="temp_past" type='{"type":"int32"}' value="0"/>
+        <Local name="max_count" type='{"type":"int32"}' value="5"/>
+        <Local name="one" type='{"type":"int32"}' value="1"/>
     </Workspace>
 </Procedure>

@@ -1,6 +1,6 @@
-# Overview of example systems
+# Overview of exercises
 
-As an example system, we will use a simplified control system for a greenhouse. The example focuses on temperature and humidity control of the greenhouse.
+For the exercises, we will implement a simplified control system for a greenhouse. The system focuses on temperature and humidity control of the greenhouse.
 
 ## Subsystems of the control system
 
