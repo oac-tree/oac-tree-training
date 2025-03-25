@@ -1,465 +1,465 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MvvmDocument application="SUP PV Monitor">
-  <Model type="MonitorModel">
-    <Item type="Workspace">
-      <ItemData>
-        <Variant type="string" role="0">a090bb29-ddca-43de-90cb-46b3bbcd6d67</Variant>
-      </ItemData>
-      <TaggedItems defaultTag="kVariableItems">
-        <ItemContainer>
-          <TagInfo name="kVariableItems"/>
-          <Item type="PvAccessServer">
+    <Model type="MonitorModel">
+        <Item type="Workspace">
             <ItemData>
-              <Variant type="string" role="0">41ee1d95-478f-463f-96f0-f7e956fb81d0</Variant>
-              <Variant type="string" role="2">day_minutes</Variant>
-              <Variant type="int32" role="3">32</Variant>
-              <Variant type="string" role="10">PvAccessServer</Variant>
+                <Variant type="string" role="0">a090bb29-ddca-43de-90cb-46b3bbcd6d67</Variant>
             </ItemData>
-            <TaggedItems defaultTag="kAnyValueTag">
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">0015c0e3-3cc6-411e-bc94-704b95d283d9</Variant>
-                    <Variant type="string" role="1">greenhouse:minutes</Variant>
-                    <Variant type="string" role="2">channel</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">string</Variant>
-                    <Variant type="string" role="10">string</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">da05d14e-6906-4944-8a5b-497d5ef11073</Variant>
-                    <Variant type="int32" role="1">716</Variant>
-                    <Variant type="string" role="2">value</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">int32</Variant>
-                    <Variant type="string" role="10">int32</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
-                <Item type="PropertyItem">
-                  <ItemData>
-                    <Variant type="string" role="0">fd01e84c-930b-4ce9-bb8d-063471429120</Variant>
-                    <Variant type="bool" role="1">false</Variant>
-                    <Variant type="string" role="2">connected</Variant>
-                    <Variant type="int32" role="3">26</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
+            <TaggedItems defaultTag="kVariableItems">
+                <ItemContainer>
+                    <TagInfo name="kVariableItems"/>
+                    <Item type="PvAccessServer">
+                        <ItemData>
+                            <Variant type="string" role="0">41ee1d95-478f-463f-96f0-f7e956fb81d0</Variant>
+                            <Variant type="string" role="2">day_minutes</Variant>
+                            <Variant type="int32" role="3">32</Variant>
+                            <Variant type="string" role="10">PvAccessServer</Variant>
+                        </ItemData>
+                        <TaggedItems defaultTag="kAnyValueTag">
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">0015c0e3-3cc6-411e-bc94-704b95d283d9</Variant>
+                                        <Variant type="string" role="1">greenhouse:minutes</Variant>
+                                        <Variant type="string" role="2">channel</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">string</Variant>
+                                        <Variant type="string" role="10">string</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">da05d14e-6906-4944-8a5b-497d5ef11073</Variant>
+                                        <Variant type="int32" role="1">716</Variant>
+                                        <Variant type="string" role="2">value</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">int32</Variant>
+                                        <Variant type="string" role="10">int32</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
+                                <Item type="PropertyItem">
+                                    <ItemData>
+                                        <Variant type="string" role="0">fd01e84c-930b-4ce9-bb8d-063471429120</Variant>
+                                        <Variant type="bool" role="1">false</Variant>
+                                        <Variant type="string" role="2">connected</Variant>
+                                        <Variant type="int32" role="3">26</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                        </TaggedItems>
+                    </Item>
+                    <Item type="PvAccessServer">
+                        <ItemData>
+                            <Variant type="string" role="0">ff016ad1-d76f-40d4-a0e7-072495220fa0</Variant>
+                            <Variant type="string" role="2">In_temperature</Variant>
+                            <Variant type="int32" role="3">32</Variant>
+                            <Variant type="string" role="10">PvAccessServer</Variant>
+                        </ItemData>
+                        <TaggedItems defaultTag="kAnyValueTag">
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">dc5a96b2-13df-4a94-8fbe-cf99713260f6</Variant>
+                                        <Variant type="string" role="1">greenhouse:in_temperature</Variant>
+                                        <Variant type="string" role="2">channel</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">string</Variant>
+                                        <Variant type="string" role="10">string</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">c948bb15-5c01-424a-8ffd-fc346afa2a89</Variant>
+                                        <Variant type="int32" role="1">22</Variant>
+                                        <Variant type="string" role="2">value</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">int32</Variant>
+                                        <Variant type="string" role="10">int32</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
+                                <Item type="PropertyItem">
+                                    <ItemData>
+                                        <Variant type="string" role="0">4aaf7db3-2908-4c15-aac6-083d5b6cf410</Variant>
+                                        <Variant type="bool" role="1">false</Variant>
+                                        <Variant type="string" role="2">connected</Variant>
+                                        <Variant type="int32" role="3">26</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                        </TaggedItems>
+                    </Item>
+                    <Item type="PvAccessClient">
+                        <ItemData>
+                            <Variant type="string" role="0">7b53ec82-d662-4a69-b44f-7c5549d18028</Variant>
+                            <Variant type="string" role="2">Out_temperature</Variant>
+                            <Variant type="int32" role="3">32</Variant>
+                            <Variant type="string" role="10">PvAccessClient</Variant>
+                        </ItemData>
+                        <TaggedItems defaultTag="kAnyValueTag">
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">4f7dc251-210a-4a7f-bde4-bf3f78f3fbe8</Variant>
+                                        <Variant type="string" role="1">greenhouse:out_temp</Variant>
+                                        <Variant type="string" role="2">channel</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">string</Variant>
+                                        <Variant type="string" role="10">string</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">5acbed87-0d5c-4ba6-a643-d663b9cfd7ff</Variant>
+                                        <Variant type="int32" role="1">23</Variant>
+                                        <Variant type="string" role="2">value</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">int32</Variant>
+                                        <Variant type="string" role="10">int32</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
+                                <Item type="PropertyItem">
+                                    <ItemData>
+                                        <Variant type="string" role="0">22f0c37d-6672-4292-aecf-8497bca480e8</Variant>
+                                        <Variant type="bool" role="1">false</Variant>
+                                        <Variant type="string" role="2">connected</Variant>
+                                        <Variant type="int32" role="3">26</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                        </TaggedItems>
+                    </Item>
+                    <Item type="ChannelAccessClient">
+                        <ItemData>
+                            <Variant type="string" role="0">8a5de037-22ac-4cd1-a7c2-8dbdaace4755</Variant>
+                            <Variant type="string" role="2">Pump1_mode</Variant>
+                            <Variant type="int32" role="3">32</Variant>
+                            <Variant type="string" role="10">ChannelAccessClient</Variant>
+                        </ItemData>
+                        <TaggedItems defaultTag="kAnyValueTag">
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">135bbbce-ad96-4fb4-a268-a3dc7809a8f3</Variant>
+                                        <Variant type="string" role="1">TEMP:PUMP1:MODE</Variant>
+                                        <Variant type="string" role="2">channel</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">string</Variant>
+                                        <Variant type="string" role="10">string</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">d0e6b5e0-21eb-486f-9bf3-0daf2c94cca4</Variant>
+                                        <Variant type="int32" role="1">2</Variant>
+                                        <Variant type="string" role="2">value</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">int32</Variant>
+                                        <Variant type="string" role="10">int32</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
+                                <Item type="PropertyItem">
+                                    <ItemData>
+                                        <Variant type="string" role="0">d4371312-94c3-4f69-93eb-1c03eb91bf5f</Variant>
+                                        <Variant type="bool" role="1">false</Variant>
+                                        <Variant type="string" role="2">connected</Variant>
+                                        <Variant type="int32" role="3">26</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                        </TaggedItems>
+                    </Item>
+                    <Item type="ChannelAccessClient">
+                        <ItemData>
+                            <Variant type="string" role="0">7ba786eb-7481-436a-b0e2-2d01e4005676</Variant>
+                            <Variant type="string" role="2">Pump1_failure</Variant>
+                            <Variant type="int32" role="3">32</Variant>
+                            <Variant type="string" role="10">ChannelAccessClient</Variant>
+                        </ItemData>
+                        <TaggedItems defaultTag="kAnyValueTag">
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">dfcd009f-098e-4248-b82f-ceb624c6588c</Variant>
+                                        <Variant type="string" role="1">TEMP:PUMP1:FAILURE</Variant>
+                                        <Variant type="string" role="2">channel</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">string</Variant>
+                                        <Variant type="string" role="10">string</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">3a515259-715c-4f91-89bb-f089a1c2967b</Variant>
+                                        <Variant type="int32" role="1">0</Variant>
+                                        <Variant type="string" role="2">value</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">int32</Variant>
+                                        <Variant type="string" role="10">int32</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
+                                <Item type="PropertyItem">
+                                    <ItemData>
+                                        <Variant type="string" role="0">215e4219-7e48-429a-a005-e75da79d1448</Variant>
+                                        <Variant type="bool" role="1">false</Variant>
+                                        <Variant type="string" role="2">connected</Variant>
+                                        <Variant type="int32" role="3">26</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                        </TaggedItems>
+                    </Item>
+                    <Item type="ChannelAccessClient">
+                        <ItemData>
+                            <Variant type="string" role="0">b2673eef-aff2-4c6a-aa90-426ba3db9b48</Variant>
+                            <Variant type="string" role="2">Pump2_mode</Variant>
+                            <Variant type="int32" role="3">32</Variant>
+                            <Variant type="string" role="10">ChannelAccessClient</Variant>
+                        </ItemData>
+                        <TaggedItems defaultTag="kAnyValueTag">
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">0a3ccae8-1b08-4161-a211-42f6af5fbc5b</Variant>
+                                        <Variant type="string" role="1">TEMP:PUMP2:MODE</Variant>
+                                        <Variant type="string" role="2">channel</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">string</Variant>
+                                        <Variant type="string" role="10">string</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">13f5ec59-ead9-4d2a-8a4c-325503979a89</Variant>
+                                        <Variant type="int32" role="1">0</Variant>
+                                        <Variant type="string" role="2">value</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">int32</Variant>
+                                        <Variant type="string" role="10">int32</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
+                                <Item type="PropertyItem">
+                                    <ItemData>
+                                        <Variant type="string" role="0">e9f0f185-5e47-4533-bb43-0730c5b18795</Variant>
+                                        <Variant type="bool" role="1">false</Variant>
+                                        <Variant type="string" role="2">connected</Variant>
+                                        <Variant type="int32" role="3">26</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                        </TaggedItems>
+                    </Item>
+                    <Item type="ChannelAccessClient">
+                        <ItemData>
+                            <Variant type="string" role="0">0f977470-908e-462f-a031-c3557876c234</Variant>
+                            <Variant type="string" role="2">Pump2_failure</Variant>
+                            <Variant type="int32" role="3">32</Variant>
+                            <Variant type="string" role="10">ChannelAccessClient</Variant>
+                        </ItemData>
+                        <TaggedItems defaultTag="kAnyValueTag">
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">fc837688-4319-4789-a067-f835440c485d</Variant>
+                                        <Variant type="string" role="1">TEMP:PUMP2:FAILURE</Variant>
+                                        <Variant type="string" role="2">channel</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">string</Variant>
+                                        <Variant type="string" role="10">string</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">dff11db7-9b99-4467-9a36-c40847a1ace2</Variant>
+                                        <Variant type="int32" role="1">0</Variant>
+                                        <Variant type="string" role="2">value</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">int32</Variant>
+                                        <Variant type="string" role="10">int32</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
+                                <Item type="PropertyItem">
+                                    <ItemData>
+                                        <Variant type="string" role="0">c6d22517-42b1-4ddd-b700-c3a448ba2425</Variant>
+                                        <Variant type="bool" role="1">false</Variant>
+                                        <Variant type="string" role="2">connected</Variant>
+                                        <Variant type="int32" role="3">26</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                        </TaggedItems>
+                    </Item>
+                    <Item type="ChannelAccessClient">
+                        <ItemData>
+                            <Variant type="string" role="0">1f39aa25-db8f-4254-9fda-c5ec526f796b</Variant>
+                            <Variant type="string" role="2">Operational_state</Variant>
+                            <Variant type="int32" role="3">32</Variant>
+                            <Variant type="string" role="10">ChannelAccessClient</Variant>
+                        </ItemData>
+                        <TaggedItems defaultTag="kAnyValueTag">
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">c39a53d3-1288-496c-897f-70e85de3daeb</Variant>
+                                        <Variant type="string" role="1">TEMP:OPSTATE</Variant>
+                                        <Variant type="string" role="2">channel</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">string</Variant>
+                                        <Variant type="string" role="10">string</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">31c433bb-13b8-4229-8fe4-b6ca45472501</Variant>
+                                        <Variant type="int32" role="1">3</Variant>
+                                        <Variant type="string" role="2">value</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">int32</Variant>
+                                        <Variant type="string" role="10">int32</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
+                                <Item type="PropertyItem">
+                                    <ItemData>
+                                        <Variant type="string" role="0">f68c52af-78fc-4cae-9daf-db1d6a359dc6</Variant>
+                                        <Variant type="bool" role="1">false</Variant>
+                                        <Variant type="string" role="2">connected</Variant>
+                                        <Variant type="int32" role="3">26</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                        </TaggedItems>
+                    </Item>
+                    <Item type="ChannelAccessClient">
+                        <ItemData>
+                            <Variant type="string" role="0">4a365a3c-1d13-47b7-b765-98ba29d48578</Variant>
+                            <Variant type="string" role="2">Number_available_pumps</Variant>
+                            <Variant type="int32" role="3">32</Variant>
+                            <Variant type="string" role="10">ChannelAccessClient</Variant>
+                        </ItemData>
+                        <TaggedItems defaultTag="kAnyValueTag">
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">78a63563-1121-47be-8a4d-5bf9cd72b71b</Variant>
+                                        <Variant type="string" role="1">TEMP:N-PUMPS</Variant>
+                                        <Variant type="string" role="2">channel</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">string</Variant>
+                                        <Variant type="string" role="10">string</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
+                                <Item type="AnyValueScalar">
+                                    <ItemData>
+                                        <Variant type="string" role="0">67efc331-2d4d-4b74-bcb4-ece4a6a38838</Variant>
+                                        <Variant type="int32" role="1">2</Variant>
+                                        <Variant type="string" role="2">value</Variant>
+                                        <Variant type="int32" role="3">16</Variant>
+                                        <Variant type="string" role="4">int32</Variant>
+                                        <Variant type="string" role="10">int32</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                            <ItemContainer>
+                                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
+                                <Item type="PropertyItem">
+                                    <ItemData>
+                                        <Variant type="string" role="0">5a2af636-4434-4d81-a544-8e5fc8f7233e</Variant>
+                                        <Variant type="bool" role="1">false</Variant>
+                                        <Variant type="string" role="2">connected</Variant>
+                                        <Variant type="int32" role="3">26</Variant>
+                                    </ItemData>
+                                    <TaggedItems defaultTag=""/>
+                                </Item>
+                            </ItemContainer>
+                        </TaggedItems>
+                    </Item>
+                </ItemContainer>
             </TaggedItems>
-          </Item>
-          <Item type="PvAccessServer">
-            <ItemData>
-              <Variant type="string" role="0">ff016ad1-d76f-40d4-a0e7-072495220fa0</Variant>
-              <Variant type="string" role="2">In_temperature</Variant>
-              <Variant type="int32" role="3">32</Variant>
-              <Variant type="string" role="10">PvAccessServer</Variant>
-            </ItemData>
-            <TaggedItems defaultTag="kAnyValueTag">
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">dc5a96b2-13df-4a94-8fbe-cf99713260f6</Variant>
-                    <Variant type="string" role="1">greenhouse:in_temperature</Variant>
-                    <Variant type="string" role="2">channel</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">string</Variant>
-                    <Variant type="string" role="10">string</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">c948bb15-5c01-424a-8ffd-fc346afa2a89</Variant>
-                    <Variant type="int32" role="1">22</Variant>
-                    <Variant type="string" role="2">value</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">int32</Variant>
-                    <Variant type="string" role="10">int32</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
-                <Item type="PropertyItem">
-                  <ItemData>
-                    <Variant type="string" role="0">4aaf7db3-2908-4c15-aac6-083d5b6cf410</Variant>
-                    <Variant type="bool" role="1">false</Variant>
-                    <Variant type="string" role="2">connected</Variant>
-                    <Variant type="int32" role="3">26</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-            </TaggedItems>
-          </Item>
-          <Item type="PvAccessClient">
-            <ItemData>
-              <Variant type="string" role="0">7b53ec82-d662-4a69-b44f-7c5549d18028</Variant>
-              <Variant type="string" role="2">Out_temperature</Variant>
-              <Variant type="int32" role="3">32</Variant>
-              <Variant type="string" role="10">PvAccessClient</Variant>
-            </ItemData>
-            <TaggedItems defaultTag="kAnyValueTag">
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">4f7dc251-210a-4a7f-bde4-bf3f78f3fbe8</Variant>
-                    <Variant type="string" role="1">greenhouse:out_temp</Variant>
-                    <Variant type="string" role="2">channel</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">string</Variant>
-                    <Variant type="string" role="10">string</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">5acbed87-0d5c-4ba6-a643-d663b9cfd7ff</Variant>
-                    <Variant type="int32" role="1">23</Variant>
-                    <Variant type="string" role="2">value</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">int32</Variant>
-                    <Variant type="string" role="10">int32</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
-                <Item type="PropertyItem">
-                  <ItemData>
-                    <Variant type="string" role="0">22f0c37d-6672-4292-aecf-8497bca480e8</Variant>
-                    <Variant type="bool" role="1">false</Variant>
-                    <Variant type="string" role="2">connected</Variant>
-                    <Variant type="int32" role="3">26</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-            </TaggedItems>
-          </Item>
-          <Item type="ChannelAccessClient">
-            <ItemData>
-              <Variant type="string" role="0">8a5de037-22ac-4cd1-a7c2-8dbdaace4755</Variant>
-              <Variant type="string" role="2">Pump1_mode</Variant>
-              <Variant type="int32" role="3">32</Variant>
-              <Variant type="string" role="10">ChannelAccessClient</Variant>
-            </ItemData>
-            <TaggedItems defaultTag="kAnyValueTag">
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">135bbbce-ad96-4fb4-a268-a3dc7809a8f3</Variant>
-                    <Variant type="string" role="1">TEMP:PUMP1:MODE</Variant>
-                    <Variant type="string" role="2">channel</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">string</Variant>
-                    <Variant type="string" role="10">string</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">d0e6b5e0-21eb-486f-9bf3-0daf2c94cca4</Variant>
-                    <Variant type="int32" role="1">2</Variant>
-                    <Variant type="string" role="2">value</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">int32</Variant>
-                    <Variant type="string" role="10">int32</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
-                <Item type="PropertyItem">
-                  <ItemData>
-                    <Variant type="string" role="0">d4371312-94c3-4f69-93eb-1c03eb91bf5f</Variant>
-                    <Variant type="bool" role="1">false</Variant>
-                    <Variant type="string" role="2">connected</Variant>
-                    <Variant type="int32" role="3">26</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-            </TaggedItems>
-          </Item>
-          <Item type="ChannelAccessClient">
-            <ItemData>
-              <Variant type="string" role="0">7ba786eb-7481-436a-b0e2-2d01e4005676</Variant>
-              <Variant type="string" role="2">Pump1_failure</Variant>
-              <Variant type="int32" role="3">32</Variant>
-              <Variant type="string" role="10">ChannelAccessClient</Variant>
-            </ItemData>
-            <TaggedItems defaultTag="kAnyValueTag">
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">dfcd009f-098e-4248-b82f-ceb624c6588c</Variant>
-                    <Variant type="string" role="1">TEMP:PUMP1:FAILURE</Variant>
-                    <Variant type="string" role="2">channel</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">string</Variant>
-                    <Variant type="string" role="10">string</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">3a515259-715c-4f91-89bb-f089a1c2967b</Variant>
-                    <Variant type="int32" role="1">0</Variant>
-                    <Variant type="string" role="2">value</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">int32</Variant>
-                    <Variant type="string" role="10">int32</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
-                <Item type="PropertyItem">
-                  <ItemData>
-                    <Variant type="string" role="0">215e4219-7e48-429a-a005-e75da79d1448</Variant>
-                    <Variant type="bool" role="1">false</Variant>
-                    <Variant type="string" role="2">connected</Variant>
-                    <Variant type="int32" role="3">26</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-            </TaggedItems>
-          </Item>
-          <Item type="ChannelAccessClient">
-            <ItemData>
-              <Variant type="string" role="0">b2673eef-aff2-4c6a-aa90-426ba3db9b48</Variant>
-              <Variant type="string" role="2">Pump2_mode</Variant>
-              <Variant type="int32" role="3">32</Variant>
-              <Variant type="string" role="10">ChannelAccessClient</Variant>
-            </ItemData>
-            <TaggedItems defaultTag="kAnyValueTag">
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">0a3ccae8-1b08-4161-a211-42f6af5fbc5b</Variant>
-                    <Variant type="string" role="1">TEMP:PUMP2:MODE</Variant>
-                    <Variant type="string" role="2">channel</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">string</Variant>
-                    <Variant type="string" role="10">string</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">13f5ec59-ead9-4d2a-8a4c-325503979a89</Variant>
-                    <Variant type="int32" role="1">0</Variant>
-                    <Variant type="string" role="2">value</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">int32</Variant>
-                    <Variant type="string" role="10">int32</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
-                <Item type="PropertyItem">
-                  <ItemData>
-                    <Variant type="string" role="0">e9f0f185-5e47-4533-bb43-0730c5b18795</Variant>
-                    <Variant type="bool" role="1">false</Variant>
-                    <Variant type="string" role="2">connected</Variant>
-                    <Variant type="int32" role="3">26</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-            </TaggedItems>
-          </Item>
-          <Item type="ChannelAccessClient">
-            <ItemData>
-              <Variant type="string" role="0">0f977470-908e-462f-a031-c3557876c234</Variant>
-              <Variant type="string" role="2">Pump2_failure</Variant>
-              <Variant type="int32" role="3">32</Variant>
-              <Variant type="string" role="10">ChannelAccessClient</Variant>
-            </ItemData>
-            <TaggedItems defaultTag="kAnyValueTag">
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">fc837688-4319-4789-a067-f835440c485d</Variant>
-                    <Variant type="string" role="1">TEMP:PUMP2:FAILURE</Variant>
-                    <Variant type="string" role="2">channel</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">string</Variant>
-                    <Variant type="string" role="10">string</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">dff11db7-9b99-4467-9a36-c40847a1ace2</Variant>
-                    <Variant type="int32" role="1">0</Variant>
-                    <Variant type="string" role="2">value</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">int32</Variant>
-                    <Variant type="string" role="10">int32</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
-                <Item type="PropertyItem">
-                  <ItemData>
-                    <Variant type="string" role="0">c6d22517-42b1-4ddd-b700-c3a448ba2425</Variant>
-                    <Variant type="bool" role="1">false</Variant>
-                    <Variant type="string" role="2">connected</Variant>
-                    <Variant type="int32" role="3">26</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-            </TaggedItems>
-          </Item>
-          <Item type="ChannelAccessClient">
-            <ItemData>
-              <Variant type="string" role="0">1f39aa25-db8f-4254-9fda-c5ec526f796b</Variant>
-              <Variant type="string" role="2">Operational_state</Variant>
-              <Variant type="int32" role="3">32</Variant>
-              <Variant type="string" role="10">ChannelAccessClient</Variant>
-            </ItemData>
-            <TaggedItems defaultTag="kAnyValueTag">
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">c39a53d3-1288-496c-897f-70e85de3daeb</Variant>
-                    <Variant type="string" role="1">TEMP:OPSTATE</Variant>
-                    <Variant type="string" role="2">channel</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">string</Variant>
-                    <Variant type="string" role="10">string</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">31c433bb-13b8-4229-8fe4-b6ca45472501</Variant>
-                    <Variant type="int32" role="1">3</Variant>
-                    <Variant type="string" role="2">value</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">int32</Variant>
-                    <Variant type="string" role="10">int32</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
-                <Item type="PropertyItem">
-                  <ItemData>
-                    <Variant type="string" role="0">f68c52af-78fc-4cae-9daf-db1d6a359dc6</Variant>
-                    <Variant type="bool" role="1">false</Variant>
-                    <Variant type="string" role="2">connected</Variant>
-                    <Variant type="int32" role="3">26</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-            </TaggedItems>
-          </Item>
-          <Item type="ChannelAccessClient">
-            <ItemData>
-              <Variant type="string" role="0">4a365a3c-1d13-47b7-b765-98ba29d48578</Variant>
-              <Variant type="string" role="2">Number_available_pumps</Variant>
-              <Variant type="int32" role="3">32</Variant>
-              <Variant type="string" role="10">ChannelAccessClient</Variant>
-            </ItemData>
-            <TaggedItems defaultTag="kAnyValueTag">
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="channel">AnyValueScalar</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">78a63563-1121-47be-8a4d-5bf9cd72b71b</Variant>
-                    <Variant type="string" role="1">TEMP:N-PUMPS</Variant>
-                    <Variant type="string" role="2">channel</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">string</Variant>
-                    <Variant type="string" role="10">string</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo name="kAnyValueTag">AnyValueEmpty, AnyValueScalar, AnyValueStruct, AnyValueArray</TagInfo>
-                <Item type="AnyValueScalar">
-                  <ItemData>
-                    <Variant type="string" role="0">67efc331-2d4d-4b74-bcb4-ece4a6a38838</Variant>
-                    <Variant type="int32" role="1">2</Variant>
-                    <Variant type="string" role="2">value</Variant>
-                    <Variant type="int32" role="3">16</Variant>
-                    <Variant type="string" role="4">int32</Variant>
-                    <Variant type="string" role="10">int32</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-              <ItemContainer>
-                <TagInfo min="1" max="1" name="connected">PropertyItem</TagInfo>
-                <Item type="PropertyItem">
-                  <ItemData>
-                    <Variant type="string" role="0">5a2af636-4434-4d81-a544-8e5fc8f7233e</Variant>
-                    <Variant type="bool" role="1">false</Variant>
-                    <Variant type="string" role="2">connected</Variant>
-                    <Variant type="int32" role="3">26</Variant>
-                  </ItemData>
-                  <TaggedItems defaultTag=""/>
-                </Item>
-              </ItemContainer>
-            </TaggedItems>
-          </Item>
-        </ItemContainer>
-      </TaggedItems>
-    </Item>
-  </Model>
+        </Item>
+    </Model>
 </MvvmDocument>

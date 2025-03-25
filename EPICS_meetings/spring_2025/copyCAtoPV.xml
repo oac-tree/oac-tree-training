@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
-  <Plugin>liboac-tree-ca.so</Plugin>
-  <Plugin>liboac-tree-mathexpr.so</Plugin>
-  <Plugin>liboac-tree-pvxs.so</Plugin>
-  <Sequence isRoot="true">
-    <WaitForVariables timeout="10.0" varType="ChannelAccessClient"/>
-    <Wait timeout="6.0"/>
-    <ChannelAccessRead channel="ROBOT-TESTS:CA_LONG" outputVar="var0" timeout="1.0"/>
-    <Increment varName="var0"/>
-    <MathExpression expression="var2:=var0*2"/>
-    <Output fromVar="var0"/>
-    <Wait timeout="6.0"/>
-  </Sequence>
-  <Workspace>
-    <Local name="var0" type='{"type":"int64"}' value="0"/>
-    <ChannelAccessClient channel="ROBOT-TESTS:CA_LONG" name="var1" type='{"type":"int64"}'/>
-    <PvAccessServer channel="ROBOT-TESTS:PV_LONG" name="var2" type='{"type":"int32"}' value="0"/>
-  </Workspace>
+    <Plugin>liboac-tree-ca.so</Plugin>
+    <Plugin>liboac-tree-mathexpr.so</Plugin>
+    <Plugin>liboac-tree-pvxs.so</Plugin>
+    <Sequence isRoot="true">
+        <WaitForVariables timeout="10.0" varType="ChannelAccessClient"/>
+        <Wait timeout="6.0"/>
+        <ChannelAccessRead channel="ROBOT-TESTS:CA_LONG" outputVar="var0" timeout="1.0"/>
+        <Increment varName="var0"/>
+        <MathExpression expression="var2:=var0*2"/>
+        <Output fromVar="var0"/>
+        <Wait timeout="6.0"/>
+    </Sequence>
+    <Workspace>
+        <Local name="var0" type='{"type":"int64"}' value="0"/>
+        <ChannelAccessClient channel="ROBOT-TESTS:CA_LONG" name="var1" type='{"type":"int64"}'/>
+        <PvAccessServer channel="ROBOT-TESTS:PV_LONG" name="var2" type='{"type":"int32"}' value="0"/>
+    </Workspace>
 </Procedure>

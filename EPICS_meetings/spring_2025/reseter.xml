@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
-  <Plugin>liboac-tree-pvxs.so</Plugin>
-  <Sequence isRoot="true">
-    <WaitForVariables timeout="10.0" varType="pv_counter"/>
-    <Listen varNames="pv_counter">
-      <Sequence>
-        <Fallback>
-          <LessThan leftVar="pv_counter" rightVar="ten"/>
-          <Copy inputVar="zero" outputVar="pv_counter"/>
-        </Fallback>
-        <Output fromVar="pv_counter"/>
-      </Sequence>
-    </Listen>
-  </Sequence>
-  <Workspace>
-    <PvAccessClient channel="training::epics::pv_counter" name="pv_counter" type='{"type":"int32"}'/>
-    <Local name="ten" type='{"type":"int32"}' value="10"/>
-    <Local name="zero" type='{"type":"int32"}' value="0"/>
-  </Workspace>
+    <Plugin>liboac-tree-pvxs.so</Plugin>
+    <Sequence isRoot="true">
+        <WaitForVariables timeout="10.0" varType="pv_counter"/>
+        <Listen varNames="pv_counter">
+            <Sequence>
+                <Fallback>
+                    <LessThan leftVar="pv_counter" rightVar="ten"/>
+                    <Copy inputVar="zero" outputVar="pv_counter"/>
+                </Fallback>
+                <Output fromVar="pv_counter"/>
+            </Sequence>
+        </Listen>
+    </Sequence>
+    <Workspace>
+        <PvAccessClient channel="training::epics::pv_counter" name="pv_counter" type='{"type":"int32"}'/>
+        <Local name="ten" type='{"type":"int32"}' value="10"/>
+        <Local name="zero" type='{"type":"int32"}' value="0"/>
+    </Workspace>
 </Procedure>
