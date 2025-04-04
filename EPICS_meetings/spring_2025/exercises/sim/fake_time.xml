@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Plugin>liboac-tree-pvxs.so</Plugin>
+    <Repeat isRoot="true" maxCount="-1">
+        <Sequence>
+            <Wait timeout="@step_timeout"/>
+            <Increment varName="time_cache"/>
+            <Fallback name="Reset time to 0 if larger than period">
+                <LessThan leftVar="time_cache" rightVar="period"/>
+                <Copy inputVar="zero" outputVar="time_cache"/>
+            </Fallback>
+            <Copy inputVar="time_cache" outputVar="fake_time"/>
+        </Sequence>
+    </Repeat>
+    <Workspace>
+        <Local name="zero" type='{"type":"float64"}' value='0.0'/>
+        <Local name="step_timeout" type='{"type":"float64"}' value='1.0'/>
+        <Local name="period" type='{"type":"float64"}' value='200'/>
+        <Local name="time_cache" type='{"type":"float64"}' value='0.0'/>
+        <PvAccessServer name="fake_time" channel="greenhouse:FAKE-TIME" type='{"type":"float64"}' value='0.0'/>
+        <PvAccessServer name="temp_out" channel="greenhouse:TEMP-OUT" type='{"type":"float64"}'/>
+    </Workspace>
+</Procedure>

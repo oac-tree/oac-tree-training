@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Plugin>liboac-tree-mathexpr.so</Plugin>
+    <Plugin>liboac-tree-pvxs.so</Plugin>
+    <Sequence isRoot="true">
+        <WaitForVariables timeout="3.0" varType="PvAccessClient"/>
+        <Listen varNames="fake_time">
+            <Sequence>
+                <MathExpression expression="temp_out:=mean_temp + temp_ampl * cos(6.283 * fake_time / 200 + 3.142)"/>
+                <Output fromVar="temp_out"/>
+            </Sequence>
+        </Listen>
+    </Sequence>
+    <Workspace>
+        <PvAccessClient channel="greenhouse:FAKE-TIME" name="fake_time" type='{"type":"float64"}'/>
+        <PvAccessClient channel="greenhouse:TEMP-OUT" name="temp_out" type='{"type":"float64"}'/>
+        <Local name="mean_temp" type='{"type":"float64"}' value="12"/>
+        <Local name="temp_ampl" type='{"type":"float64"}' value="6"/>
+    </Workspace>
+</Procedure>

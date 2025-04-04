@@ -1,10 +1,8 @@
 # Overview of exercises
 
-For the exercises, we will implement a simplified control system for a greenhouse. The system focuses on temperature and humidity control of the greenhouse.
+For the exercises, we will implement a simplified control system for a greenhouse. The system focuses on temperature control of the greenhouse.
 
-## Subsystems of the control system
-
-### Temperature control
+## Temperature control
 
 Temperature is controlled by a pair of geothermal heat pumps.
 
@@ -17,7 +15,7 @@ Each pump has the following process variables:
 
 where `X` is `1` or `2`.
 
-#### Monitoring procedures
+### Monitoring procedures
 
 A monitoring procedure will be created to publish the following PVs:
 
@@ -41,12 +39,8 @@ When a pump exhibits a failure, it is assumed to be idle.
 
 This state deduction will also be implemented as part of the exercise.
 
-#### Control procedures
+### Control procedures
 
 A low-level control procedure will be implemented that tries to put the TEMP:OPSTATE in the desired state: idle or reduced/max heating/cooling.
 
-As a next step, a more automatic control procedure could use the current temperature readings (inside/outside) and the desired setpoint to send an appropriate command to the low-level control procedure (use PvAccess for this communication between procedures).
-
-### Humidity control
-
-Humidity is controlled by sprinklers (increase humidity) and ventilation (decrease humidity).
+As a next step, a more automatic control procedure could use the current temperature readings (inside/outside) and the desired setpoint to send an appropriate command to the low-level control procedure.

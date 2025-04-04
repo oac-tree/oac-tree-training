@@ -8,6 +8,5 @@
     <Workspace>
         <Local dynamicType="true" name="reply"/>
         <Local name="req" type='{"type":"struct","attributes":[{"path":{"type":"string"}},{"query":{"type":"struct","attributes":[{"lhs":{"type":"int32"}},{"rhs":{"type":"int32"}}]}}]}' value='{"path":"pv:call:add","query":{"lhs":8,"rhs":13}}'/>
-        <Local name="value" type='{"type":"struct","attributes":[{"lhs":{"type":"int32"}},{"rhs":{"type":"int32"}}]}' value='{"lhs":8,"rhs":13}'/>
     </Workspace>
 </Procedure>
