@@ -4,70 +4,70 @@
   <Listen name="Monitor two pumps and create aggregate state" isRoot="true" varNames="pump1_mode,pump1_failure,pump2_mode,pump2_failure" forceSuccess="true">
     <Sequence name="Calculate n_pumps and pump aggregated state">
       <Sequence name="Calculate number of pumps not in failure state">
-        <Copy inputVar="two" outputVar="n_pumps_cache"/>
+        <Copy name="Initialize number of pumps cache to 2" inputVar="two" outputVar="n_pumps_cache"/>
         <Fallback name="Decrement cache if pump 1 not ok">
-          <Equals leftVar="pump1_failure" rightVar="ok"/>
-          <Decrement varName="n_pumps_cache"/>
+          <Equals name="Pump 1 is ok" leftVar="pump1_failure" rightVar="ok"/>
+          <Decrement name="Decrement cache" varName="n_pumps_cache"/>
         </Fallback>
         <Fallback name="Decrement cache if pump 2 not ok">
-          <Equals leftVar="pump2_failure" rightVar="ok"/>
-          <Decrement varName="n_pumps_cache"/>
+          <Equals name="Pump 2 is ok" leftVar="pump2_failure" rightVar="ok"/>
+          <Decrement name="Decrement cache" varName="n_pumps_cache"/>
         </Fallback>
-        <Copy inputVar="n_pumps_cache" outputVar="n_pumps"/>
+        <Copy name="Copy cache to PV" inputVar="n_pumps_cache" outputVar="n_pumps"/>
       </Sequence>
       <Fallback name="Calculate pumps aggregate state">
         <Sequence name="Case pump 1 idle">
           <Fallback name="Pump 1 is idle or in failure">
-            <Equals leftVar="pump1_mode" rightVar="idle"/>
-            <Equals leftVar="pump1_failure" rightVar="failure"/>
+            <Equals name="Pump 1 is idle" leftVar="pump1_mode" rightVar="idle"/>
+            <Equals name="Pump 1 is in failure" leftVar="pump1_failure" rightVar="failure"/>
           </Fallback>
           <Fallback name="Calculate state based on pump 2 state">
             <Sequence name="Case pump 2 idle">
               <Fallback name="Pump 2 is idle or in failure">
-                <Equals leftVar="pump2_mode" rightVar="idle"/>
-                <Equals leftVar="pump2_failure" rightVar="failure"/>
+                <Equals name="Pump 2 is idle" leftVar="pump2_mode" rightVar="idle"/>
+                <Equals name="Pump 2 is in failure" leftVar="pump2_failure" rightVar="failure"/>
               </Fallback>
-              <Copy inputVar="idle" outputVar="pumps_state"/>
+              <Copy name="Set state to idle" inputVar="idle" outputVar="pumps_state"/>
             </Sequence>
             <Sequence name="Case pump 2 heating">
-              <Equals leftVar="pump2_mode" rightVar="heating"/>
-              <Copy inputVar="reduced_heating" outputVar="pumps_state"/>
+              <Equals name="Pump 2 is heating" leftVar="pump2_mode" rightVar="heating"/>
+              <Copy name="Set state to reduced heating" inputVar="reduced_heating" outputVar="pumps_state"/>
             </Sequence>
-            <Copy inputVar="reduced_cooling" outputVar="pumps_state"/>
+            <Copy name="Set state to reduced cooling" inputVar="reduced_cooling" outputVar="pumps_state"/>
           </Fallback>
         </Sequence>
         <Sequence name="Case pump 1 heating">
-          <Equals leftVar="pump1_mode" rightVar="heating"/>
+          <Equals name="Pump 1 is heating" leftVar="pump1_mode" rightVar="heating"/>
           <Fallback name="Calculate state based on pump 2 state">
             <Sequence name="Case pump 2 idle">
               <Fallback name="Pump 2 is idle or in failure">
-                <Equals leftVar="pump2_mode" rightVar="idle"/>
-                <Equals leftVar="pump2_failure" rightVar="failure"/>
+                <Equals name="Pump 2 is idle" leftVar="pump2_mode" rightVar="idle"/>
+                <Equals name="Pump 2 is in failure" leftVar="pump2_failure" rightVar="failure"/>
               </Fallback>
-              <Copy inputVar="reduced_heating" outputVar="pumps_state"/>
+              <Copy name="Set state to reduced heating" inputVar="reduced_heating" outputVar="pumps_state"/>
             </Sequence>
             <Sequence name="Case pump 2 heating">
-              <Equals leftVar="pump2_mode" rightVar="heating"/>
-              <Copy inputVar="max_heating" outputVar="pumps_state"/>
+              <Equals name="Pump 2 is heating" leftVar="pump2_mode" rightVar="heating"/>
+              <Copy name="Set state to max heating" inputVar="max_heating" outputVar="pumps_state"/>
             </Sequence>
-            <Copy inputVar="fault" outputVar="pumps_state"/>
+            <Copy name="Set state to fault" inputVar="fault" outputVar="pumps_state"/>
           </Fallback>
         </Sequence>
         <Sequence name="Case pump 1 cooling">
-          <Equals leftVar="pump1_mode" rightVar="cooling"/>
+          <Equals name="Pump 1 is coolling" leftVar="pump1_mode" rightVar="cooling"/>
           <Fallback name="Calculate state based on pump 2 state">
             <Sequence name="Case pump 2 idle">
               <Fallback name="Pump 2 is idle or in failure">
-                <Equals leftVar="pump2_mode" rightVar="idle"/>
-                <Equals leftVar="pump2_failure" rightVar="failure"/>
+                <Equals name="Pump 2 is idle" leftVar="pump2_mode" rightVar="idle"/>
+                <Equals name="Pump 2 is in failure" leftVar="pump2_failure" rightVar="failure"/>
               </Fallback>
-              <Copy inputVar="reduced_cooling" outputVar="pumps_state"/>
+              <Copy name="Set state to reduced cooling" inputVar="reduced_cooling" outputVar="pumps_state"/>
             </Sequence>
             <Sequence name="Case pump 2 cooling">
-              <Equals leftVar="pump2_mode" rightVar="cooling"/>
-              <Copy inputVar="max_cooling" outputVar="pumps_state"/>
+              <Equals name="Pump is cooling" leftVar="pump2_mode" rightVar="cooling"/>
+              <Copy name="Set state to max cooling" inputVar="max_cooling" outputVar="pumps_state"/>
             </Sequence>
-            <Copy inputVar="fault" outputVar="pumps_state"/>
+            <Copy name="Set state to fault" inputVar="fault" outputVar="pumps_state"/>
           </Fallback>
         </Sequence>
       </Fallback>

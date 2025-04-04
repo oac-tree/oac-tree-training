@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
   <Plugin>liboac-tree-ca.so</Plugin>
-  <UserChoice name="Choose control action" isRoot="true">
-    <Sequence name="Clear failure states">
+  <UserChoice name="ControlActions" isRoot="true">
+    <Sequence name="ClearFailureStates">
       <Copy name="Clear pump 1 failure state" inputVar="ok" outputVar="pump1_failure"/>
       <Copy name="Clear pump 2 failure state" inputVar="ok" outputVar="pump2_failure"/>
     </Sequence>
-    <Sequence name="Set to idle state">
+    <Sequence name="SetToIdle">
       <Copy name="Set pump 1 to idle" inputVar="idle" outputVar="pump1_mode"/>
       <Copy name="Set pump 2 to idle" inputVar="idle" outputVar="pump2_mode"/>
     </Sequence>
-    <Fallback name="Set reduced heating">
+    <Fallback name="SetToReducedHeating">
       <Sequence name="Case pump 1 ok">
         <Equals name="Pump 1 is ok" leftVar="pump1_failure" rightVar="ok"/>
         <Copy name="Set pump 1 to heating" inputVar="heating" outputVar="pump1_mode"/>
@@ -22,13 +22,13 @@
         <Copy name="Set pump 2 to heating" inputVar="heating" outputVar="pump2_mode"/>
       </Sequence>
     </Fallback>
-    <Sequence name="Set max heating">
+    <Sequence name="SetToMaxHeating">
       <Equals name="Pump 1 is ok" leftVar="pump1_failure" rightVar="ok"/>
       <Equals name="Pump 2 is ok" leftVar="pump2_failure" rightVar="ok"/>
       <Copy name="Set pump 1 to heating" inputVar="heating" outputVar="pump1_mode"/>
       <Copy name="Set pump 2 to heating" inputVar="heating" outputVar="pump2_mode"/>
     </Sequence>
-    <Fallback name="Set reduced cooling">
+    <Fallback name="SetToReducedCooling">
       <Sequence name="Case pump 1 ok">
         <Equals name="Pump 1 is ok" leftVar="pump1_failure" rightVar="ok"/>
         <Copy name="Set pump 1 to cooling" inputVar="cooling" outputVar="pump1_mode"/>
@@ -40,7 +40,7 @@
         <Copy name="Set pump 2 to cooling" inputVar="cooling" outputVar="pump2_mode"/>
       </Sequence>
     </Fallback>
-    <Sequence name="Set max cooling">
+    <Sequence name="SetToMaxCooling">
       <Equals name="Pump 1 is ok" leftVar="pump1_failure" rightVar="ok"/>
       <Equals name="Pump 2 is ok" leftVar="pump2_failure" rightVar="ok"/>
       <Copy name="Set pump 1 to cooling" inputVar="cooling" outputVar="pump1_mode"/>
