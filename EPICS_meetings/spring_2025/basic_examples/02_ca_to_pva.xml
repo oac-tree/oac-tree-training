@@ -5,7 +5,6 @@
     <Plugin>liboac-tree-pvxs.so</Plugin>
     <Sequence isRoot="true">
         <WaitForVariables timeout="10.0" varType="ChannelAccessClient"/>
-        <Wait timeout="6.0"/>
         <Copy inputVar="pv_ca" outputVar="cache" />
         <Increment varName="cache"/>
         <MathExpression expression="pv_pva:=cache*2"/>

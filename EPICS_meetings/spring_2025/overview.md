@@ -18,3 +18,11 @@ source .venv/bin/activate
 pip install --upgrade pip
 pip install -r pip_reqs.txt
 ```
+
+## Workshop overview
+
+* Basic intro to GUI: file explorer, editor and execution
+* oac-tree-server and client
+* Basic control nodes and their use: e.g. Listen for monitoring procedures
+* Greenhouse example: explain construction of the simplest exercises
+* Guided exercises

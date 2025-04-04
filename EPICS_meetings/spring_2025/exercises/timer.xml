@@ -8,6 +8,6 @@
         </Sequence>
     </Repeat>
     <Workspace>
-        <PvAccessClient channel="greenhouse:minutes" name="day_minutes" type='{"type":"int32"}'/>
+        <PvAccessClient name="day_minutes" channel="greenhouse:minutes" type='{"type":"int32"}'/>
     </Workspace>
 </Procedure>

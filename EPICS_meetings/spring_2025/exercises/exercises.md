@@ -1,14 +1,14 @@
 # oac-tree training exercises
 
-## learn the basics
+## Basic examples
 
-* Implement the fibbonacci algorithm with just the core instructions of oac-tree
-* Implement a procedure to read data from a ChannelAccessClient variable and write it to a PVAccessServer variable.
-* Create a procedure that waits for a specific condition on a ChannelAccessClient variable before proceeding.
-* Develop two scripts, one that increments a PV every second, another one that resets PV if it is bigger than 10
-* Develop a sequence to start a timer and log a message when it
-* Develop a parallel_sequence instruction to perform two actions simultaneously with PVAccessClient variables.
-* Develop a procedure to start a timer when a specific condition is met on a PVAccessClient variable.
+1. Implement the fibbonacci algorithm with just the core instructions of oac-tree
+2. Implement a procedure to read data from a ChannelAccessClient variable and write it to a PVAccessServer variable.
+3. Create a procedure that waits for a specific condition on a ChannelAccessClient variable before proceeding.
+4. Develop two scripts, one that increments a PV every second, another one that resets PV if it is bigger than 10
+5. Develop a sequence to start a timer and log a message when it expires
+6. Develop a parallel_sequence instruction to perform two actions simultaneously with PVAccessClient variables.
+7. Develop a procedure to start an action when a specific condition is met on a PVAccessClient variable.
 
 ## Greenhouse simulation
 
