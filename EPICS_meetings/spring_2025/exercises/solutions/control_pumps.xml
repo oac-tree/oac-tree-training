@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+  <Plugin>liboac-tree-ca.so</Plugin>
+  <UserChoice name="Choose control action" isRoot="true">
+    <Sequence name="Clear failure states">
+      <Copy name="Clear pump 1 failure state" inputVar="ok" outputVar="pump1_failure"/>
+      <Copy name="Clear pump 2 failure state" inputVar="ok" outputVar="pump2_failure"/>
+    </Sequence>
+    <Sequence name="Set to idle state">
+      <Copy name="Set pump 1 to idle" inputVar="idle" outputVar="pump1_mode"/>
+      <Copy name="Set pump 2 to idle" inputVar="idle" outputVar="pump2_mode"/>
+    </Sequence>
+    <Fallback name="Set reduced heating">
+      <Sequence name="Case pump 1 ok">
+        <Equals name="Pump 1 is ok" leftVar="pump1_failure" rightVar="ok"/>
+        <Copy name="Set pump 1 to heating" inputVar="heating" outputVar="pump1_mode"/>
+        <Copy name="Set pump 2 to idle" inputVar="idle" outputVar="pump2_mode"/>
+      </Sequence>
+      <Sequence name="Case pump 1 in failure">
+        <Equals name="Pump 2 is ok" leftVar="pump2_failure" rightVar="ok"/>
+        <Copy name="Set pump 1 to idle" inputVar="idle" outputVar="pump1_mode"/>
+        <Copy name="Set pump 2 to heating" inputVar="heating" outputVar="pump2_mode"/>
+      </Sequence>
+    </Fallback>
+    <Sequence name="Set max heating">
+      <Equals name="Pump 1 is ok" leftVar="pump1_failure" rightVar="ok"/>
+      <Equals name="Pump 2 is ok" leftVar="pump2_failure" rightVar="ok"/>
+      <Copy name="Set pump 1 to heating" inputVar="heating" outputVar="pump1_mode"/>
+      <Copy name="Set pump 2 to heating" inputVar="heating" outputVar="pump2_mode"/>
+    </Sequence>
+    <Fallback name="Set reduced cooling">
+      <Sequence name="Case pump 1 ok">
+        <Equals name="Pump 1 is ok" leftVar="pump1_failure" rightVar="ok"/>
+        <Copy name="Set pump 1 to cooling" inputVar="cooling" outputVar="pump1_mode"/>
+        <Copy name="Set pump 2 to idle" inputVar="idle" outputVar="pump2_mode"/>
+      </Sequence>
+      <Sequence name="Case pump 1 in failure">
+        <Equals name="Pump 2 is ok" leftVar="pump2_failure" rightVar="ok"/>
+        <Copy name="Set pump 1 to idle" inputVar="idle" outputVar="pump1_mode"/>
+        <Copy name="Set pump 2 to cooling" inputVar="cooling" outputVar="pump2_mode"/>
+      </Sequence>
+    </Fallback>
+    <Sequence name="Set max cooling">
+      <Equals name="Pump 1 is ok" leftVar="pump1_failure" rightVar="ok"/>
+      <Equals name="Pump 2 is ok" leftVar="pump2_failure" rightVar="ok"/>
+      <Copy name="Set pump 1 to cooling" inputVar="cooling" outputVar="pump1_mode"/>
+      <Copy name="Set pump 2 to cooling" inputVar="cooling" outputVar="pump2_mode"/>
+    </Sequence>
+    <Copy name="Set pump 1 to failure state" inputVar="failure" outputVar="pump1_failure"/>
+    <Copy name="Set pump 2 to failure state" inputVar="failure" outputVar="pump2_failure"/>
+  </UserChoice>
+  <Workspace>
+    <ChannelAccessClient channel="TEMP:PUMP1:MODE" name="pump1_mode" type='{"type":"uint32"}'/>
+    <ChannelAccessClient channel="TEMP:PUMP1:FAILURE" name="pump1_failure" type='{"type":"uint32"}'/>
+    <ChannelAccessClient channel="TEMP:PUMP2:MODE" name="pump2_mode" type='{"type":"uint32"}'/>
+    <ChannelAccessClient channel="TEMP:PUMP2:FAILURE" name="pump2_failure" type='{"type":"uint32"}'/>
+    <ChannelAccessClient channel="TEMP:OPSTATE" name="pumps_state" type='{"type":"uint32"}'/>
+    <ChannelAccessClient channel="TEMP:N-PUMPS" name="n_pumps" type='{"type":"uint32"}'/>
+    <Local name="n_pumps_cache" type='{"type":"uint32"}' value="0"/>
+    <Local name="idle" type='{"type":"uint32"}' value="0"/>
+    <Local name="heating" type='{"type":"uint32"}' value="1"/>
+    <Local name="cooling" type='{"type":"uint32"}' value="2"/>
+    <Local name="two" type='{"type":"uint32"}' value="2"/>
+    <Local name="ok" type='{"type":"uint32"}' value="0"/>
+    <Local name="failure" type='{"type":"uint32"}' value="1"/>
+    <Local name="reduced_heating" type='{"type":"uint32"}' value="1"/>
+    <Local name="max_heating" type='{"type":"uint32"}' value="2"/>
+    <Local name="reduced_cooling" type='{"type":"uint32"}' value="3"/>
+    <Local name="max_cooling" type='{"type":"uint32"}' value="4"/>
+    <Local name="fault" type='{"type":"uint32"}' value="5"/>
+  </Workspace>
+</Procedure>

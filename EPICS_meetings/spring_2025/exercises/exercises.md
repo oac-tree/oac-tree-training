@@ -16,6 +16,7 @@
 
 * launch the CA database with softIOC:
   /opt/codac/epics/bin/linux-x86_64/softIoc -d greenhouse_records.db &
+* develop a procedure that monitors the pumps' PVs and publishes the number of operational pumps and the temperature control state
 * launch oac-tree-gui and load the following scripts:
   * compute_inside_temperature.xml
   * compute_outside_temperature.xml
