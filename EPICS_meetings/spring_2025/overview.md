@@ -26,5 +26,6 @@ pip install -r pip_reqs.txt
 * Basic intro to GUI: file explorer, editor and execution
 * oac-tree-server and client
 * Basic control nodes and their use: e.g. Listen for monitoring procedures, Fallback for regular operational tasks, etc.
-* Greenhouse example: explain construction of the simplest exercises
-* Guided exercises
+* Optional exercises using Greenhouse example
+  * explain construction of the simplest exercises
+* Discussion
