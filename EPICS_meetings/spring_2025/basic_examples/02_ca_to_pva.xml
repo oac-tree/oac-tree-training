@@ -3,15 +3,18 @@
     <Plugin>liboac-tree-ca.so</Plugin>
     <Plugin>liboac-tree-mathexpr.so</Plugin>
     <Plugin>liboac-tree-pvxs.so</Plugin>
-    <Sequence isRoot="true">
-        <WaitForVariables timeout="10.0" varType="ChannelAccessClient"/>
-        <Copy inputVar="pv_ca" outputVar="cache" />
-        <Increment varName="cache"/>
-        <MathExpression expression="pv_pva:=cache*2"/>
-        <Output description="CA PV" fromVar="pv_ca"/>
-        <Output description="Cache" fromVar="cache"/>
-        <Output description="PVA PV" fromVar="pv_pva"/>
-    </Sequence>
+    <Fallback isRoot="true">
+        <Sequence>
+            <WaitForVariables timeout="10.0" varType="ChannelAccessClient"/>
+            <Copy inputVar="pv_ca" outputVar="cache" />
+            <Increment varName="cache"/>
+            <MathExpression expression="pv_pva:=cache*2"/>
+            <Output description="CA PV" fromVar="pv_ca"/>
+            <Output description="Cache" fromVar="cache"/>
+            <Output description="PVA PV" fromVar="pv_pva"/>
+        </Sequence>
+        <Message text="I failed miserably"/>
+    </Fallback>
     <Workspace>
         <Local name="cache" type='{"type":"int64"}' value="0"/>
         <ChannelAccessClient name="pv_ca" channel="EXAMPLES:CA_LONG" type='{"type":"int64"}'/>
