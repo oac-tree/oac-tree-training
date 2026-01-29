@@ -24,12 +24,9 @@
 
 #include <oac-tree/training/i_server_stack.h>
 
-#include <sup/config/configuration_interface.h>
-#include <sup/config/configuration_protocol_server.h>
-#include <sup/cvvf/cvvf_interface.h>
-#include <sup/cvvf/cvvf_protocol_server.h>
-#include <sup/protocol/protocol_rpc_server.h>
-#include <sup/epics/pv_access_rpc_server.h>
+#include <sup/interfaces/config/configuration_interface.h>
+#include <sup/interfaces/cvvf/cvvf_interface.h>
+#include <sup/protocol/protocol_factory.h>
 
 #include <memory>
 #include <string>
@@ -47,9 +44,7 @@ public:
   virtual ~EPICSConfigServerStack();
 private:
   std::unique_ptr<sup::config::ConfigurationInterface> m_config_handler;
-  sup::config::ConfigurationProtocolServer m_config_protocol_server;
-  sup::protocol::ProtocolRPCServer m_protocol_rpc_server;
-  sup::epics::PvAccessRPCServer m_epics_server;
+  std::unique_ptr<sup::protocol::RPCServerInterface> m_server;
 };
 
 class EPICSCVVFServerStack : public IServerStack
@@ -61,9 +56,7 @@ public:
   virtual ~EPICSCVVFServerStack();
 private:
   std::unique_ptr<sup::cvvf::CVVFInterface> m_cvvf_handler;
-  sup::cvvf::CVVFProtocolServer m_cvvf_protocol_server;
-  sup::protocol::ProtocolRPCServer m_protocol_rpc_server;
-  sup::epics::PvAccessRPCServer m_epics_server;
+  std::unique_ptr<sup::protocol::RPCServerInterface> m_server;
 };
 
 }  // namespace training

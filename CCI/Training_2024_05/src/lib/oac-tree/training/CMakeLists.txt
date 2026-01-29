@@ -15,12 +15,12 @@ target_include_directories(oac-tree-training PUBLIC
 find_package(sup-dto REQUIRED)
 find_package(sup-protocol REQUIRED)
 find_package(sup-epics REQUIRED)
-find_package(sup-config REQUIRED)
+find_package(sup-interfaces REQUIRED)
 
 target_link_libraries(oac-tree-training
   PRIVATE
-    sup-config::sup-config
-    sup-config::sup-cvvf
+    sup-interfaces::sup-interfaces-config
+    sup-interfaces::sup-interfaces-cvvf
     sup-epics::sup-epics
     sup-protocol::sup-protocol
     sup-dto::sup-dto

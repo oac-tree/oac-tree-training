@@ -22,7 +22,7 @@
 #ifndef OAC_TREE_TRAINING_SIGNAL_GENERATOR_CVVF_FUNCTIONS_H_
 #define OAC_TREE_TRAINING_SIGNAL_GENERATOR_CVVF_FUNCTIONS_H_
 
-#include <sup/cvvf/user_function.h>
+#include <sup/interfaces/cvvf/user_function.h>
 
 namespace oac_tree
 {

@@ -22,7 +22,7 @@
 #ifndef OAC_TREE_TRAINING_SIGNAL_GENERATOR_CONFIG_HANDLER_H_
 #define OAC_TREE_TRAINING_SIGNAL_GENERATOR_CONFIG_HANDLER_H_
 
-#include <sup/config/configuration_interface.h>
+#include <sup/interfaces/config/configuration_interface.h>
 
 namespace oac_tree
 {

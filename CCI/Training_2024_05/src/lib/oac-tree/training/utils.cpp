@@ -21,6 +21,11 @@
 
 #include <oac-tree/training/utils.h>
 
+#include <sup/epics/epics_protocol_factory.h>
+#include <sup/interfaces/config/configuration_protocol_server.h>
+#include <sup/interfaces/cvvf/cvvf_protocol_server.h>
+#include <sup/templates/inject_as_unique_ptr.h>
+
 namespace oac_tree
 {
 namespace training
@@ -30,9 +35,10 @@ EPICSConfigServerStack::EPICSConfigServerStack(
   const std::string& service_name,
   std::unique_ptr<sup::config::ConfigurationInterface> config_handler)
   : m_config_handler{std::move(config_handler)}
-  , m_config_protocol_server{*m_config_handler}
-  , m_protocol_rpc_server{m_config_protocol_server}
-  , m_epics_server{sup::epics::GetDefaultRPCServerConfig(service_name), m_protocol_rpc_server}
+  , m_server{sup::epics::CreateEPICSRPCServerStack(
+                sup::epics::GetDefaultRPCServerConfig(service_name),
+                sup::protocol::ProtocolRPCServerConfig{},
+                std::make_unique<sup::config::ConfigurationProtocolServer>(*m_config_handler))}
 {}
 
 EPICSConfigServerStack::~EPICSConfigServerStack() = default;
@@ -41,9 +47,10 @@ EPICSCVVFServerStack::EPICSCVVFServerStack(
   const std::string& service_name,
   std::unique_ptr<sup::cvvf::CVVFInterface> cvvf_handler)
   : m_cvvf_handler{std::move(cvvf_handler)}
-  , m_cvvf_protocol_server{*m_cvvf_handler}
-  , m_protocol_rpc_server{m_cvvf_protocol_server}
-  , m_epics_server{sup::epics::GetDefaultRPCServerConfig(service_name), m_protocol_rpc_server}
+  , m_server{sup::epics::CreateEPICSRPCServerStack(
+                sup::epics::GetDefaultRPCServerConfig(service_name),
+                sup::protocol::ProtocolRPCServerConfig{},
+                std::make_unique<sup::cvvf::CVVFProtocolServer>(*m_cvvf_handler))}
 {}
 
 EPICSCVVFServerStack::~EPICSCVVFServerStack() = default;
