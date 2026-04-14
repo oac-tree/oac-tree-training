@@ -2,7 +2,7 @@
 <Procedure>
     <Plugin>liboac-tree-pvxs.so</Plugin>
     <Sequence isRoot="true">
-        <WaitForVariables timeout="10.0" varType="pv_counter"/>
+        <WaitForVariable timeout="10.0" varName="pv_counter"/>
         <Listen varNames="pv_counter">
             <Sequence>
                 <Fallback>
