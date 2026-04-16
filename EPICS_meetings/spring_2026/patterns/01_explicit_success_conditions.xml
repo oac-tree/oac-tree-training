@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <Plugin>oac-tree-pvxs</Plugin>
+    <ReactiveSequence>
+        <ReactiveFallback name="Achieve door unlocked">
+            <Inverter name="Door unlocked">
+                <Condition varName="door_locked"/>
+            </Inverter>
+            <Sequence name="Unlock door">
+                <Wait timeout="3.0" blocking="false"/>
+                <Copy inputVar="false" outputVar="door_locked"/>
+                <Wait timeout="120.0" blocking="false"/>
+            </Sequence>
+        </ReactiveFallback>
+        <ReactiveFallback name="Achieve open door">
+            <Condition varName="door_open" name="Door open"/>
+            <Sequence name="Open door">
+                <Wait timeout="3.0" blocking="false"/>
+                <Copy inputVar="true" outputVar="door_open"/>
+                <Wait timeout="120.0" blocking="false"/>
+            </Sequence>
+        </ReactiveFallback>
+        <ReactiveFallback name="Achieve room entered">
+            <Condition varName="is_in_room" name="Has entered room"/>
+            <Sequence name="Enter room">
+                <Wait timeout="3.0" blocking="false"/>
+                <Copy inputVar="true" outputVar="is_in_room"/>
+                <Wait timeout="120.0" blocking="false"/>
+            </Sequence>
+        </ReactiveFallback>
+    </ReactiveSequence>
+    <Workspace>
+        <PvAccessEncodedClient channel="sim-room:door-locked" name="door_locked"/>
+        <PvAccessEncodedClient channel="sim-room:door-open" name="door_open"/>
+        <PvAccessEncodedClient channel="sim-room:is-in-room" name="is_in_room"/>
+        <Local name="true" type='{"type":"bool"}' value="true"/>
+        <Local name="false" type='{"type":"bool"}' value="false"/>
+    </Workspace>
+</Procedure>

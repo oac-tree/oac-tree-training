@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure>
+    <ReactiveFallback>
+        <ReactiveSequence>
+            <Condition varName="predicate"/>
+            <Repeat maxCount="-1" name="True path">
+                <Sequence>
+                    <Message text="Executing true path"/>
+                    <Wait timeout="2.0" blocking="false"/>
+                </Sequence>
+            </Repeat>
+        </ReactiveSequence>
+        <Repeat maxCount="-1" name="False path">
+            <Sequence>
+                <Message text="Executing false path"/>
+                <Wait timeout="2.0" blocking="false"/>
+            </Sequence>
+        </Repeat>
+    </ReactiveFallback>
+    <Workspace>
+        <Local name="predicate" type='{"type":"bool"}' value="false"/>
+    </Workspace>
+</Procedure>
