@@ -4,28 +4,25 @@
     <ReactiveFallback>
         <Condition varName="is_in_room" name="Has entered room"/>
         <ReactiveSequence name="Achieve enter room">
-            <Condition varName="door_open" name="Door open"/>
+            <ReactiveFallback>
+                <Condition varName="door_open" name="Door open"/>
+                <ReactiveSequence name="Achieve open door">
+                    <Inverter name="Door unlocked">
+                        <Condition varName="door_locked"/>
+                    </Inverter>
+                    <Sequence name="Open door">
+                        <Wait timeout="3.0" blocking="false"/>
+                        <Copy inputVar="true" outputVar="door_open"/>
+                        <Wait timeout="120.0" blocking="false"/>
+                    </Sequence>
+                </ReactiveSequence>
+            </ReactiveFallback>
             <Sequence name="Enter room">
                 <Wait timeout="3.0" blocking="false"/>
                 <Copy inputVar="true" outputVar="is_in_room"/>
                 <Wait timeout="120.0" blocking="false"/>
             </Sequence>
         </ReactiveSequence>
-        <ReactiveSequence name="Achieve open door">
-            <Inverter name="Door unlocked">
-                <Condition varName="door_locked"/>
-            </Inverter>
-            <Sequence name="Open door">
-                <Wait timeout="3.0" blocking="false"/>
-                <Copy inputVar="true" outputVar="door_open"/>
-                <Wait timeout="120.0" blocking="false"/>
-            </Sequence>
-        </ReactiveSequence>
-        <Sequence name="Unlock door">
-            <Wait timeout="3.0" blocking="false"/>
-            <Copy inputVar="false" outputVar="door_locked"/>
-            <Wait timeout="120.0" blocking="false"/>
-        </Sequence>
     </ReactiveFallback>
     <Workspace>
         <PvAccessEncodedClient channel="sim-room:door-locked" name="door_locked"/>

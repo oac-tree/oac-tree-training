@@ -11,21 +11,6 @@
                 <Wait timeout="120.0" blocking="false"/>
             </Sequence>
         </ReactiveSequence>
-        <ReactiveSequence name="Achieve open door">
-            <Inverter name="Door unlocked">
-                <Condition varName="door_locked"/>
-            </Inverter>
-            <Sequence name="Open door">
-                <Wait timeout="3.0" blocking="false"/>
-                <Copy inputVar="true" outputVar="door_open"/>
-                <Wait timeout="120.0" blocking="false"/>
-            </Sequence>
-        </ReactiveSequence>
-        <Sequence name="Unlock door">
-            <Wait timeout="3.0" blocking="false"/>
-            <Copy inputVar="false" outputVar="door_locked"/>
-            <Wait timeout="120.0" blocking="false"/>
-        </Sequence>
     </ReactiveFallback>
     <Workspace>
         <PvAccessEncodedClient channel="sim-room:door-locked" name="door_locked"/>

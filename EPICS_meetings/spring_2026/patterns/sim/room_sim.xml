@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure>
-  <Plugin>oac-tree-pvxs</Plugin>
-  <Wait timeout="7200.0" blocking="true"/>
-  <Workspace>
-    <PvAccessEncodedServer channel="sim-room:door-open" name="door_open" type='{"type":"bool"}' value="false"/>
-    <PvAccessEncodedServer channel="sim-room:door-locked" name="door_locked" type='{"type":"bool"}' value="true"/>
-    <PvAccessEncodedServer channel="sim-room:is-in-room" name="is_in_room" type='{"type":"bool"}' value="false"/>
-  </Workspace>
+    <Plugin>oac-tree-pvxs</Plugin>
+    <Wait timeout="7200.0" blocking="true"/>
+    <Workspace>
+        <PvAccessEncodedServer channel="sim-room:door-open" name="door_open" type='{"type":"bool"}' value="false"/>
+        <PvAccessEncodedServer channel="sim-room:door-locked" name="door_locked" type='{"type":"bool"}' value="true"/>
+        <PvAccessEncodedServer channel="sim-room:is-in-room" name="is_in_room" type='{"type":"bool"}' value="false"/>
+    </Workspace>
 </Procedure>
