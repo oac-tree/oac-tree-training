@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Procedure>
+<Procedure name="Improving safety with a failure handling path">
     <ReactiveSequence>
         <ReactiveFallback>
             <Condition varName="system_ok" name="System OK?"/>
             <Repeat maxCount="-1" name="Failure path">
                 <Sequence>
                     <Log message="Handle system failure" severity="warning"/>
-                    <Wait timeout="2.0" blocking="false"/>
+                    <Wait timeout="2.0"/>
                 </Sequence>
             </Repeat>
         </ReactiveFallback>
         <Repeat maxCount="-1" name="Main path">
             <Sequence>
                 <Message text="Executing main path"/>
-                <Wait timeout="2.0" blocking="false"/>
+                <Wait timeout="2.0"/>
             </Sequence>
         </Repeat>
     </ReactiveSequence>

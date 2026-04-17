@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Procedure>
+<Procedure name="Full PPA backchaining to unlock door - open door - enter room">
     <Plugin>oac-tree-pvxs</Plugin>
     <ReactiveFallback>
         <Condition varName="is_in_room" name="Has entered room"/>
@@ -12,22 +12,22 @@
                             <Condition varName="door_locked"/>
                         </Inverter>
                         <Sequence name="Unlock door">
-                            <Wait timeout="3.0" blocking="false"/>
+                            <Wait timeout="3.0"/>
                             <Copy inputVar="false" outputVar="door_locked"/>
-                            <Wait timeout="120.0" blocking="false"/>
+                            <Wait timeout="120.0"/>
                         </Sequence>
                     </ReactiveFallback>
                     <Sequence name="Open door">
-                        <Wait timeout="3.0" blocking="false"/>
+                        <Wait timeout="3.0"/>
                         <Copy inputVar="true" outputVar="door_open"/>
-                        <Wait timeout="120.0" blocking="false"/>
+                        <Wait timeout="120.0"/>
                     </Sequence>
                 </ReactiveSequence>
             </ReactiveFallback>
             <Sequence name="Enter room">
-                <Wait timeout="3.0" blocking="false"/>
+                <Wait timeout="3.0"/>
                 <Copy inputVar="true" outputVar="is_in_room"/>
-                <Wait timeout="120.0" blocking="false"/>
+                <Wait timeout="120.0"/>
             </Sequence>
         </ReactiveSequence>
     </ReactiveFallback>

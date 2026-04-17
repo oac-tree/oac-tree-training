@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Procedure>
+<Procedure name="Using explicit success conditions to unlock door - open door - enter room">
     <Plugin>oac-tree-pvxs</Plugin>
     <ReactiveSequence>
         <ReactiveFallback name="Achieve door unlocked">
@@ -7,25 +7,25 @@
                 <Condition varName="door_locked"/>
             </Inverter>
             <Sequence name="Unlock door">
-                <Wait timeout="3.0" blocking="false"/>
+                <Wait timeout="3.0"/>
                 <Copy inputVar="false" outputVar="door_locked"/>
-                <Wait timeout="120.0" blocking="false"/>
+                <Wait timeout="120.0"/>
             </Sequence>
         </ReactiveFallback>
         <ReactiveFallback name="Achieve open door">
             <Condition varName="door_open" name="Door open"/>
             <Sequence name="Open door">
-                <Wait timeout="3.0" blocking="false"/>
+                <Wait timeout="3.0"/>
                 <Copy inputVar="true" outputVar="door_open"/>
-                <Wait timeout="120.0" blocking="false"/>
+                <Wait timeout="120.0"/>
             </Sequence>
         </ReactiveFallback>
         <ReactiveFallback name="Achieve room entered">
             <Condition varName="is_in_room" name="Has entered room"/>
             <Sequence name="Enter room">
-                <Wait timeout="3.0" blocking="false"/>
+                <Wait timeout="3.0"/>
                 <Copy inputVar="true" outputVar="is_in_room"/>
-                <Wait timeout="120.0" blocking="false"/>
+                <Wait timeout="120.0"/>
             </Sequence>
         </ReactiveFallback>
     </ReactiveSequence>
