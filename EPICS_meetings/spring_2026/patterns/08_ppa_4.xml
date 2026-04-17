@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure name="Full PPA backchaining to unlock door - open door - enter room. Uses alternative paths with different preconditions">
+    <Plugin>oac-tree-pvxs</Plugin>
+    <ReactiveFallback>
+        <Condition varName="is_in_room" name="Has entered room"/>
+        <ReactiveSequence name="Achieve enter room">
+            <ReactiveFallback>
+                <Condition varName="door_open" name="Door open"/>
+                <ReactiveSequence name="Achieve open door when unlocked">
+                    <Inverter name="Door unlocked">
+                        <Condition varName="door_locked"/>
+                    </Inverter>
+                    <Sequence name="Open door">
+                        <Wait timeout="3.0"/>
+                        <Copy inputVar="true" outputVar="door_open"/>
+                        <Wait timeout="120.0"/>
+                    </Sequence>
+                </ReactiveSequence>
+                <Sequence name="Unlock door">
+                    <Wait timeout="3.0"/>
+                    <Copy inputVar="false" outputVar="door_locked"/>
+                    <Wait timeout="120.0"/>
+                </Sequence>
+            </ReactiveFallback>
+            <Sequence name="Enter room">
+                <Wait timeout="3.0"/>
+                <Copy inputVar="true" outputVar="is_in_room"/>
+                <Wait timeout="120.0"/>
+            </Sequence>
+        </ReactiveSequence>
+    </ReactiveFallback>
+    <Workspace>
+        <PvAccessEncodedClient channel="sim-room:door-locked" name="door_locked"/>
+        <PvAccessEncodedClient channel="sim-room:door-open" name="door_open"/>
+        <PvAccessEncodedClient channel="sim-room:is-in-room" name="is_in_room"/>
+        <Local name="true" type='{"type":"bool"}' value="true"/>
+        <Local name="false" type='{"type":"bool"}' value="false"/>
+    </Workspace>
+</Procedure>
