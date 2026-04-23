@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure name="Basic building block with a post-condition">
+    <ReactiveFallback name="Ensure post-condition">
+        <Condition varName="condition"/>
+        <Sequence name="Try to achieve post-condition">
+            <Wait timeout="10.0"/>
+            <Copy inputVar="true" outputVar="condition"/>
+            <Fail timeout="120.0"/>
+        </Sequence>
+    </ReactiveFallback>
+    <Workspace>
+        <Local name="condition" type='{"type":"bool"}' value="false"/>
+        <Local name="true" type='{"type":"bool"}' value="true"/>
+        <Local name="false" type='{"type":"bool"}' value="false"/>
+    </Workspace>
+</Procedure>

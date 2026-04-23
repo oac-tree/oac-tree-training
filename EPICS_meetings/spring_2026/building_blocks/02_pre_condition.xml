@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure name="Basic building block with a pre-condition">
+    <Sequence>
+        <Input description="Set condition" outputVar="condition"/>
+        <ReactiveSequence name="Perform action if pre-condition satisfied">
+            <Condition varName="condition"/>
+            <Wait name="action" timeout="10.0"/>
+        </ReactiveSequence>
+    </Sequence>
+    <Workspace>
+        <Local name="condition" type='{"type":"bool"}' value="false"/>
+    </Workspace>
+</Procedure>
