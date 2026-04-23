@@ -8,7 +8,7 @@
             <Sequence name="Enter room">
                 <Wait timeout="3.0"/>
                 <Copy inputVar="true" outputVar="is_in_room"/>
-                <Wait timeout="120.0"/>
+                <Fail timeout="120.0"/>
             </Sequence>
         </ReactiveSequence>
     </ReactiveFallback>
